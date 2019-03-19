@@ -1,0 +1,56 @@
+body {
+    font-size: 0px;
+    margin: 0px;
+}
+
+.topics-title,
+.title-box,
+.description-box {
+    font-size: 3rem;
+}
+
+.topics-title {
+    width: 100vw;
+    height: 10vh;
+    background-color: rgb(204, 52, 52);
+    text-align: center;
+}
+
+#main-content {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(153, 153, 212);
+}
+
+.content-box {
+    width: 100vw;
+    height: 30vh;
+    background-color: yellow;
+}
+
+.image-box {
+    float: left;
+    width: 20%;
+    height: 100%;
+    background-color: rgb(57, 75, 57);
+}
+
+.text-box {
+    float: left;
+    width: 80%;
+    height: 100%;
+    background-color: black;
+}
+
+.title-box {
+    width: 100%;
+    height: 20%;
+    background-color: rgb(0, 63, 0);
+    text-align: center;
+}
+
+.description-box {
+    width: 100%;
+    height: 80%;
+    background-color: rgb(0, 160, 0);
+}
