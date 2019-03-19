@@ -17,6 +17,7 @@ class Video{
                 key: 'AIzaSyDlkgVNYAnyQj3e4gZipF7DwyYBFjLtSZU'
             },
             success: (response)=>{
+                console.log(response);
                 for(let index = 0; index < response.items.length; index++){
                     let {title, description} = response.items[index].snippet;
                     const numAndTitle = `${index + 1}. ${title}`;
