@@ -30,7 +30,7 @@ class Food{
             ajaxObj.data.latitude = this.latitude;
             ajaxObj.data.longitude = this.longitude;
         } else {
-            ajaxObj.data.location = 'irvine';
+            ajaxObj.data.location = 'orange county';
         }
         this.getDataFromServer(ajaxObj);
     }
@@ -41,7 +41,7 @@ class Food{
         console.log(response);
         const business = response.businesses;
         for(let i=0; i < business.length; i++){
-            const imgurl = $('<img>').attr('src', business[i]['image_url']);
+            const imgurl = `url('${business[i]['image_url']}')`;
             const name = $('<p>').text(business[i].name);
             const businessId = business[i].alias
             const rate = business[i].rating;
@@ -50,12 +50,11 @@ class Food{
             const description = $('<p>').html(`Rating: ${rate} <br> Category: ${review_count} <br>`);
             const titleBox = $('<div>').addClass('title-box');
             const descriptionBox = $('<div>').addClass('description-box');
-            const imgBox = $('<div>').addClass('image-box');
+            const imgBox = $('<div>').addClass('image-box').css('background-image', imgurl);
             const textBox = $('<div>').addClass('text-box');
             const contentBox = $('<div>').addClass('content-box');
             const mainContent = $('#main-content');
             const link = $('<a>').attr('href', `https://www.yelp.com/biz/${businessId}`);
-            imgBox.append(imgurl);
             titleBox.append(name);
             link.append(titleBox);
             descriptionBox.append(description, address);
