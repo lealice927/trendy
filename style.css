@@ -6,6 +6,16 @@ body {
 
 .navbar{
     margin-bottom: 0;
+    
+}
+
+.navbar .navbar-brand{
+    color: blue;
+}
+
+.navbar a{
+    font-weight: normal;
+    font-size: 2vh;
 }
 
 .navbar-brand {
@@ -55,6 +65,13 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-color: black;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
 }
 
 .text-box {
@@ -91,7 +108,6 @@ a {
     a {
         font-size: 1.5vw;
     }
-
     .description-box {
         font-size: 1vw;
     }
