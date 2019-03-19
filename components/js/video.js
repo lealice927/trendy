@@ -1,11 +1,5 @@
 $(document).ready(()=> youtube = new Video());
 
-    //ES5
-// let youtube = null;
-// function initApp(){
-//     youtube = new Video();
-// }
-
 class Video{
     constructor(){
         this.getDataFromServer();
@@ -24,13 +18,11 @@ class Video{
             },
             success: (response)=>{
                 for(let index = 0; index < response.items.length; index++){
-                    const title = `${index + 1}. ${response.items[index].snippet.title}`;
-                    const description = response.items[index].snippet.description;
-                    // const imageLG = response.items[index].snippet.thumbnails.maxres.url;
-                    const imageMD = response.items[index].snippet.thumbnails.standard.url;
+                    let {title, description} = response.items[index].snippet;
+                    const numAndTitle = index + 1 + title;
+                    const {maxres, standard, medium} = response.items[index].snippet.thumbnails;
                     const link = response.items[index].id;
-                    // const imageSM = response.items[index].snippet.thumbnails.medium.url;
-                    const newDiv = youtube.newElement(imageMD, title, description, link);
+                    const newDiv = youtube.newElement(standard.url, numAndTitle, description, link);
                     youtube.render('#main-content', newDiv);
                 }
             },
