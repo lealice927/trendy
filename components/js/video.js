@@ -1,10 +1,10 @@
-$(document).ready(initApp);
+$(document).ready(()=> youtube = new Video());
 
-let youtube = null;
-
-function initApp(){
-    youtube = new Video();
-}
+    //ES5
+// let youtube = null;
+// function initApp(){
+//     youtube = new Video();
+// }
 
 class Video{
     constructor(){
@@ -13,32 +13,28 @@ class Video{
     getDataFromServer(){
         const ajaxObject = {
             dataType: 'json',
-            // url: 'https://www.googleapis.com/youtube/v3/videos',
-            url: 'https://www.googleapis.com/youtube/v3/videos?part=id%2Csnippet%2CcontentDetails',
+            url: 'https://www.googleapis.com/youtube/v3/videos',
             method: 'GET',
             data: {
-                // part: 'id%2Csnippet%2CcontentDetails',
+                part: 'id, snippet, contentDetails',
                 maxResults: 10,
                 chart: 'mostPopular',
                 regionCode: 'US',
                 key: 'AIzaSyDlkgVNYAnyQj3e4gZipF7DwyYBFjLtSZU'
             },
-            success: function(response){
-                console.log(response);
+            success: (response)=>{
                 for(let index = 0; index < response.items.length; index++){
-                    let title = `${index + 1}. ${response.items[index].snippet.title}`;
-                    let description = response.items[index].snippet.description;
-                    // let imageLG = response.items[index].snippet.thumbnails.maxres.url;
-                    let imageMD = response.items[index].snippet.thumbnails.standard.url;
-                    let link = response.items[index].id;
-                    // let imageSM = response.items[index].snippet.thumbnails.medium.url;
+                    const title = `${index + 1}. ${response.items[index].snippet.title}`;
+                    const description = response.items[index].snippet.description;
+                    // const imageLG = response.items[index].snippet.thumbnails.maxres.url;
+                    const imageMD = response.items[index].snippet.thumbnails.standard.url;
+                    const link = response.items[index].id;
+                    // const imageSM = response.items[index].snippet.thumbnails.medium.url;
                     const newDiv = youtube.newElement(imageMD, title, description, link);
                     youtube.render('#main-content', newDiv);
                 }
             },
-            error: function(){
-                alert('Failed to contact server');
-            }
+            error: ()=>alert('Failed to contact server')
         }
         $.ajax(ajaxObject);
     }
