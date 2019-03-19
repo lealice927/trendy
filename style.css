@@ -1,12 +1,38 @@
 body {
     margin: 0px;
+    position: relative;
+    background-color: lavender;
+}
+
+
+.topics-title,
+.title-box,
+.description-box {
+    font-size: 3rem;
+}
+
+.navbar{
+    margin-bottom: 0;
+}
+
+.main-body{
+    width: 80%;
+    position: relative;
+    left: 20%;
 }
 
 .topics-title {
-    width: 100vw;
-    height: 10vh;
+    width: 80%;
+    height: 15vh;
     background-color: rgb(204, 52, 52);
     text-align: center;
+    padding-top: 5%;
+}
+
+#main-content {
+    width: 80%;
+    height: 85vh;
+    background-color: rgb(153, 153, 212);
     vertical-align: middle;
     font-weight: bolder;
     font-size: 8vh;
@@ -17,10 +43,12 @@ body {
     width: 100vw;
     height: 90vh;
     background-color: black;
+
 }
 
 .content-box {
     width: 100%;
+    background-color: yellow;
     height: 30%;
     position: relative;
 }
