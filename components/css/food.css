@@ -1,0 +1,11 @@
+.content-box{
+    height: 30%;
+}
+
+.title-box{
+    font-size: 3vh;
+}
+
+.image-box{
+    background-size: cover;
+}
