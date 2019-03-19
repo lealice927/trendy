@@ -8,11 +8,20 @@ body {
 .topics-title,
 .title-box,
 .description-box {
-    font-size: 3rem;
+    font-size: 3vh;
 }
-
 .navbar{
     margin-bottom: 0;
+    
+}
+
+.navbar .navbar-brand{
+    color: blue;
+}
+
+.navbar a{
+    font-weight: normal;
+    font-size: 2vh;
 }
 
 .main-body{
@@ -42,7 +51,7 @@ body {
 
 .content-box {
     width: 100%;
-    background-color: yellow;
+    background-color: lavender;
     height: 30%;
     position: relative;
 }
@@ -54,6 +63,13 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-color: black;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
 }
 
 .text-box {
@@ -87,6 +103,6 @@ a {
 
 @media only screen and (max-width: 1200px){
     a {
-        font-size: 0.5em;
+        /* font-size: 0.5em; */
     }
 }
