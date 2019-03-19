@@ -19,7 +19,7 @@ class Video{
             success: (response)=>{
                 for(let index = 0; index < response.items.length; index++){
                     let {title, description} = response.items[index].snippet;
-                    const numAndTitle = index + 1 + title;
+                    const numAndTitle = `${index + 1}. ${title}`;
                     const {maxres, standard, medium} = response.items[index].snippet.thumbnails;
                     const link = response.items[index].id;
                     const newDiv = youtube.newElement(standard.url, numAndTitle, description, link);
