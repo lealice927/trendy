@@ -1,7 +1,9 @@
 body {
-    font-size: 0px;
     margin: 0px;
+    position: relative;
+    background-color: lavender;
 }
+
 
 .topics-title,
 .title-box,
@@ -9,48 +11,82 @@ body {
     font-size: 3rem;
 }
 
+.navbar{
+    margin-bottom: 0;
+}
+
+.main-body{
+    width: 80%;
+    position: relative;
+    left: 20%;
+}
+
 .topics-title {
-    width: 100vw;
-    height: 10vh;
+    width: 80%;
+    height: 15vh;
     background-color: rgb(204, 52, 52);
     text-align: center;
+    padding-top: 5%;
 }
 
 #main-content {
-    width: 100vw;
-    height: 90vh;
+    width: 80%;
+    height: 85vh;
     background-color: rgb(153, 153, 212);
+    vertical-align: middle;
+    font-weight: bolder;
+    font-size: 8vh;
+    color: white;
 }
 
+
 .content-box {
-    width: 100vw;
-    height: 30vh;
+    width: 100%;
     background-color: yellow;
+    height: 30%;
+    position: relative;
 }
 
 .image-box {
     float: left;
     width: 20%;
     height: 100%;
-    background-color: rgb(57, 75, 57);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: black;
 }
 
 .text-box {
     float: left;
     width: 80%;
     height: 100%;
-    background-color: black;
 }
 
 .title-box {
     width: 100%;
     height: 20%;
     background-color: rgb(0, 63, 0);
+    padding: 1% 2.5%;
+}
+
+a {
+    color: plum;
     text-align: center;
+    font-weight: bold;
+    font-size: 3vh;
+    text-decoration: none;
 }
 
 .description-box {
     width: 100%;
     height: 80%;
+    overflow: hidden;
     background-color: rgb(0, 160, 0);
+    font-size: 2vh;
+}
+
+@media only screen and (max-width: 1200px){
+    a {
+        font-size: 0.5em;
+    }
 }
