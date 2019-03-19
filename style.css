@@ -1,6 +1,8 @@
 body {
-    font-size: 0px;
+    /* font-size: 0px; */
     margin: 0px;
+    position: relative;
+    background-color: lavender;
 }
 
 .topics-title,
@@ -9,21 +11,32 @@ body {
     font-size: 3rem;
 }
 
+.navbar{
+    margin-bottom: 0;
+}
+
+.main-body{
+    width: 80%;
+    position: relative;
+    left: 20%;
+}
+
 .topics-title {
-    width: 100vw;
-    height: 10vh;
+    width: 80%;
+    height: 15vh;
     background-color: rgb(204, 52, 52);
     text-align: center;
+    padding-top: 5%;
 }
 
 #main-content {
-    width: 100vw;
-    height: 90vh;
+    width: 80%;
+    height: 85vh;
     background-color: rgb(153, 153, 212);
 }
 
 .content-box {
-    width: 100vw;
+    width: 100%;
     height: 30vh;
     background-color: yellow;
 }
