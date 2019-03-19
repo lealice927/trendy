@@ -20,10 +20,11 @@ class Video{
                 console.log(response);
                 for(let index = 0; index < response.items.length; index++){
                     let {title, description} = response.items[index].snippet;
-                    const numAndTitle = `${index + 1}. ${title}`;
+                    const numAndTitle = `${index + 1}. ${title.substr(0, 40)}`;
+                    const minDescription = `${description.substr(0, 150)}...`;
                     const {maxres, standard, medium} = response.items[index].snippet.thumbnails;
                     const link = response.items[index].id;
-                    const newDiv = youtube.newElement(standard.url, numAndTitle, description, link);
+                    const newDiv = youtube.newElement(standard.url, numAndTitle, minDescription, link);
                     youtube.render('#main-content', newDiv);
                 }
             },
