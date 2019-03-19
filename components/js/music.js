@@ -1,13 +1,25 @@
-class Music{
-    constructor(){
-        this.ajaxObject = {
-            dataType: "json",
-            url: "https://rss.itunes.apple.com/api/v1/us/itunes-music/top-songs/all/25/explicit.json",
-            method: "GET",
-            success: 
-            // error: 
-            }
+$(document).ready(startMusic);
 
+var iTunesMusic = null;
+
+function startMusic() {
+    iTunesMusic = new Music();
+}
+
+class Music {
+    constructor() {
+        this.getDataFromServer();
+    }
+    getDataFromServer() {
+        const ajaxObject = {
+            dataType: "json",
+            url: "components/php/itunes.php",
+            method: "GET",
+            success: (response) => {
+                console.log(response);
+            }
+            // error: 
         }
+        $.ajax(ajaxObject);
     }
 }
