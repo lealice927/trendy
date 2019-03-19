@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+}
+
+.main{
+    width: 100%;
+    height: 100vh;
+}
+
+.title{
+    height: 20%;
+    width: 100%;
+    border: 1px solid black;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.title-text{
+    margin: auto;
+    text-align: center;
+    height: 70%;
+    width: 50%;
+    font-size: 10vh;
+    padding-top: 1%;
+}
+
+.subtitle-text{
+    margin: auto;
+    text-align: center;
+    height: 30%;
+    width: 70%;
+    font-size: 3vh;
+}
+
+.topic-area{
+    height: 80%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.topic-box{
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    border: 1px solid red;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.topic-row{
+    height: 50%;
+    width: 100%;
+    position: relative;
+    border: 1px solid green;
+}
+
+.topics{
+    height: 80%;
+    width: 25%;
+    border: 1px solid black;
+    margin:auto;
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    left: 20%;
+    top: 10%;
+    margin: 0 2.5%;
+}
+
+.topic-text{
+    margin: auto;
+    text-align: center;
+}
