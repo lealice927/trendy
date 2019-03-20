@@ -6,7 +6,7 @@ class Modal{
 		this.onClose = null;
 
         this.show = this.show.bind(this);
-        this.hide = this.hide.bind(this);
+        this.remove = this.remove.bind(this);
 
         this.newModal = this.newElement(this.content);
         this.render('body', this.newModal);
@@ -16,19 +16,14 @@ class Modal{
 	show(){
 		$(this.newModal).show();
     }
-    
-	hide(){
-		$(this.newModal).hide();
+
+    remove(){
+        $('.modal').remove()
     }
-    
-	// updateContents(){
-	// 	$(this.body).append(this.content);
-    // }
-    
+        
 	init(){
-		this.newModal.hide();
-		// $(this.content).off('click');
-		$(this.modal).on('click', this.hide);
+        this.show();
+		$(this.modal).on('click', this.remove);
     }
 
     newElement(newContent){
@@ -40,11 +35,4 @@ class Modal{
     render(divContainer, newElement){
         $(divContainer).append(newElement);
     }
-
-    // newElement(){
-    //     this.videoSource = $('<source>');
-    //     const modalVideo = $('<video>').addClass('modalVideo').append(videoSource);
-    //     this.body = $('<div>').addClass('modalBody').append(modalVideo);
-    //     this.content = $('<div>').addClass('modalContent').append(this.body);
-    // }
 }
