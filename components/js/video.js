@@ -1,9 +1,7 @@
-$(document).ready(()=> youtube = new Video());
 
 class Video{
     constructor(){
-        this.modal = null;
-        this.getDataFromServer();
+        // this.getDataFromServer();
     }
     getDataFromServer(){
         const ajaxObject = {
@@ -41,18 +39,15 @@ class Video{
         const contentBox = $('<div>').addClass('content-box').append(imageBox, textBox);
         return contentBox;
     }
-    createModal(videoContent){
-        this.modal = new Modal(videoContent);
-    }
     passInVideo(){
         const link = $(this).attr('data-link');
-        let modalVideo = $('<iframe>', {
+        const modalVideo = $('<iframe>', {
             class: 'modalContent',
             src: link,
             frameborder: 0,
             allowfullscreen: 'allowfullscreen'
         });
-        youtube.createModal(modalVideo);
+        const modal = new Modal(modalVideo);
     }
     render(divContainer, newElement){
         $(divContainer).append(newElement);
