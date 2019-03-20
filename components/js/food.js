@@ -16,22 +16,22 @@ class Food{
         $('.close').on('click', this.closeModal);
     }
     closeModal(){
-        debugger;
         $('.modal').css('display','none');
     }
     popUpImg(content){
         const imageUrl = `url('${content.contentBox.imgBox.url}')`;
-        const modal = $('<div>').addClass('modal');
+        // const modal = $('<div>').addClass('modal');
         const picture = $('<div>').attr('id', 'picture');
-        debugger;
-        const close = $('<span>').addClass('close');
-        close.html('&times;');
-        picture.append(close);
-        modal.append(picture);
-        modal.css('display','block');
+        // debugger;
+        // const close = $('<span>').addClass('close');
+        // close.html('&times;');
+        // picture.append(close);
+        // modal.append(picture);
+        // modal.css('display','block');
         picture.css('background-image', imageUrl);
-        this.render(modal);
-        this.addEventListener();
+        // this.render(modal);
+        // this.addEventListener();
+        const modal = new Modal(picture);
     }
     generateSearchData(){
         const ajaxObj = {

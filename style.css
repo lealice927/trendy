@@ -3,6 +3,9 @@ body {
     position: relative;
     background-color: lavender;
 }
+.nav-bar{
+    height: 5vh;
+}
 
 .navbar{
     margin-bottom: 0;
@@ -34,6 +37,7 @@ body {
 }
 
 .main-body{
+    height: 90vh;
     width: 80%;
     position: relative;
     left: 20%;
@@ -42,16 +46,15 @@ body {
 .topics-title {
     background-color: rgb(132, 132, 192);
     width: 80%;
-    height: 15vh;
+    height: 8%;
     text-align: center;
-    padding-top: 7vh;
     font-size: 5vh;
     color: white;
 }
 
 #main-content {
     width: 80%;
-    height: 85vh;
+    height: 100%;
     background-color: rgb(153, 153, 212);
     vertical-align: middle;
     font-weight: bolder;
@@ -71,7 +74,7 @@ body {
     float: left;
     width: 20%;
     height: 100%;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -87,38 +90,31 @@ img {
     float: left;
     width: 80%;
     height: 100%;
+    font-size: 3vh;
 }
 
 .title-box {
     width: 100%;
     height: 30%;
-    font-size: 3vh;
-    background-color: rgb(0, 63, 0);
-    padding: 0 2vw;
-
+    background-color: #66aaa9;
+    padding-top: 2%;
+    padding-left: 5%;
 }
 
-.title-box:hover,
-.text-box:focus {
-    cursor: pointer;
-    color: purple;
-}
-
-a {
-    color: rgb(160, 100, 160);
+a, .title-box {
+    color: rgb(40, 40, 88);
     text-decoration: none;
-    font-weight: bold;
-    font-size: 3vh;
-    text-decoration: none;
+    font-size: 2vh;
 }
 
 a:hover{
-    color: rgb(197, 54, 137);
+    color: rgb(160, 100, 160);
     text-decoration: none;
+    cursor: pointer;
 }
 
 a:visited{
-    color: rgb(160, 100, 160);
+    color: rgb(40, 40, 88);
     text-decoration: none;
 }
 
@@ -130,40 +126,45 @@ a:visited{
     padding: 3% 5%;
 }
 
+.description-box p{
+    color: white;
+}
+
 .modal {
 	position: fixed;
 	left: 0;
 	top: 0;
 	height: 100vh;
 	width: 100vw;
-	background-color: rgba(255, 255, 255, 0.815);
+	background-color: rgb(153, 153, 212, 0.5);
     z-index: 1;
 }
 .modalBody {
 	position: fixed;
 	left: 50%;
 	top: 50%;
-	min-height: 30vmin;
-	min-width: 30vmin;
+    height: 60vh;
+    width: 60vh;
 	transform: translate(-50%, -50%);
-    background-color: white;
+    /* background-color: white; */
 }
 .modalContent {
-    width: 50vmin;
-    height: 50vmin;;
+    width: 100%;
+    height: 80%;
     margin: auto auto;
 }
 
-@media only screen and (max-width: 2000px) {
-    a {
-        font-size: 1.5vw;
+#picture{
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 1240px){
+    #main-content, .topics-title, .main-body{
+        width:100%;
+        left:0;
     }
 
-    .title-box {
-        font-size: 1.5vw;
-    }
-
-    .description-box {
-        font-size: 1vw;
-    }
 }
