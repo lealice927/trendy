@@ -18,6 +18,7 @@ class Video{
             },
             success: (response)=>{
                 console.log(response);
+                debugger;
                 for(let index = 0; index < response.items.length; index++){
                     let {title, description} = response.items[index].snippet;
                     const numAndTitle = `${index + 1}. ${title.substr(0, 40)}`;
