@@ -3,8 +3,11 @@
 .quoteBox{
     position: relative;
     visibility: hidden;
-    font-size: 3vh;
+    font-size: 3.5vh;
+    text-shadow: 3px 3px #ff0000;
     word-spacing: 3px;
+    padding: 13px;
+
 }
 
 .textBox:hover .quoteBox {
@@ -18,7 +21,7 @@
     width: 100%;
     opacity: 1;
     transition: .5s ease;
-    background-image: url(https://i.gifer.com/BU0.gif);
+    background-image: url(https://i.gifer.com/BU0.gif); 
     background-size: cover;
 }
 

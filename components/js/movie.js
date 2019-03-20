@@ -34,19 +34,18 @@ class Quotes{
     }
     dom(messagePassedIn){        //function returns message from URL
         const descriptionBox = $('<div>').addClass('quoteBox').append(messagePassedIn);     //creates container for message from URL to be held
-        const txtBox = $('<div>').addClass('textBox').append(descriptionBox);  //creates container for message from URL to be held
+        var newPicture = this.randomPicture();
+        const txtBox = $('<div>').addClass('textBox').css("background-image", `url(${newPicture})` ).append(descriptionBox);  //creates container for message from URL to be held
         const contentBox = $('<div>').addClass('contentBox').append(txtBox); 
         return contentBox;  
     }
 
     randomPicture(result){
-        var result = null;
-        for (pictures = 0; pictures < this.pictures.length; pictures++){
-            if (Math.floor(Math.random(result) * 9)){
-                return result;
+        var result = ['imagesQuotes/trump1.gif', 'imagesQuotes/trump2.gif', 'imagesQuotes/trump3.gif', 'imagesQuotes/trump4.gif', 'imagesQuotes/trump5.gif', 'imagesQuotes/trump6.gif', 'imagesQuotes/trump7.gif', 'imagesQuotes/trump8.gif', 'imagesQuotes/trump9.gif', 'imagesQuotes/trump10.gif', 'imagesQuotes/trump11.gif', 'imagesQuotes/trump12.gif'];
+        var randomPicture = Math.floor(Math.random()*11);
+            console.log(result[randomPicture]);  
+        return result[randomPicture];
             }
-        }
-    }
     render(divContainer, newElement){
         $(divContainer).append(newElement);
     }
