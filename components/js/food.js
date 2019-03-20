@@ -6,6 +6,21 @@ class Food{
         this.getCurrentLocation = this.getCurrentLocation.bind(this);
         this.savePosition = this.savePosition.bind(this);
         this.generateSearchData = this.generateSearchData.bind(this);
+        this.dealData = this.dealData.bind(this);
+        this.addEventListener = this.addEventListener.bind(this);
+    }
+    addEventListener(){
+        $('.close').on('click', this.closeModal);
+    }
+    closeModal(){
+        $('.winModal').css('display','none');
+    }
+    popUpImg(content){
+        debugger;
+        console.log(content);
+        const imageUrl = `url('${content.contentBox.imgBox.url}')`;
+        $('.winModal').css('display','block');
+        $('#map').css('background-image', imageUrl);
     }
     generateSearchData(){
         const ajaxObj = {
@@ -41,30 +56,13 @@ class Food{
         console.log(response);
         const business = response.businesses;
         for(let i=0; i < business.length; i++){
-            const imgurl = `url('${business[i]['image_url']}')`;
-            const name = $('<p>').text(business[i].name);
-            const businessId = business[i].alias
-            const rate = business[i].rating;
-            const review_count = business[i].categories[0].title;
-            const address = $('<p>').text(business[i].location['display_address'].join(','));
-            const description = $('<p>').html(`Rating: ${rate} <br> Category: ${review_count} <br>`);
-            const titleBox = $('<div>').addClass('title-box');
-            const descriptionBox = $('<div>').addClass('description-box');
-            const imgBox = $('<div>').addClass('image-box').css('background-image', imgurl);
-            const textBox = $('<div>').addClass('text-box');
-            const contentBox = $('<div>').addClass('content-box');
-            const mainContent = $('#main-content');
-            const link = $('<a>').attr('href', `https://www.yelp.com/biz/${businessId}`);
-            titleBox.append(name);
-            link.append(titleBox);
-            descriptionBox.append(description, address);
-            textBox.append(link, descriptionBox);
-
-            contentBox.append(imgBox, textBox);
-            mainContent.append(contentBox);
-
-        }
-        
+            const newContent = new Content(business[i], this.popUpImg);
+            this.render(newContent.makeNewContent(i));
+        }   
+    }
+    render(content){
+        const mainContent = $('#main-content');
+        mainContent.append(content);
     }
     handleError(error){
         console.log(error.statusText);
@@ -77,5 +75,6 @@ class Food{
             this.latitude = crd.latitude.toString();
             this.longitude = crd.longitude.toString();
             console.log('Current location: ',this.latitude, this.longitude);
-    }     
+    }    
 }
+
