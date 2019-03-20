@@ -1,11 +1,8 @@
 $(document).ready(startApp);
 
-
+var trendy;
 
 function startApp(){
-
-    let food = new Food();
-    // food.getDataFromServer();
-    food.generateSearchData(); 
-    food.getCurrentLocation();
+    trendy = new Trendy();
+    trendy.addEventListener();
 }
