@@ -1,11 +1,6 @@
 class Video{
     constructor(){
-<<<<<<< HEAD
-        // this.getDataFromServer();
-=======
         this.modal = null;
-        this.getDataFromServer();
->>>>>>> dd4d44be76b5a8e9c808e60a54d032eccdfe1c59
     }
     getDataFromServer(){
         const ajaxObject = {
@@ -26,12 +21,8 @@ class Video{
                     const minDescription = `${description.substr(0, 150)}...`;
                     const {standard, high} = response.items[index].snippet.thumbnails;
                     const link = response.items[index].id;
-<<<<<<< HEAD
-                    const newDiv = this.newElement(standard.url, numAndTitle, minDescription, link);
-=======
                     const videoImage = standard === undefined ? high : standard;
                     const newDiv = this.newElement(videoImage.url, numAndTitle, minDescription, link);
->>>>>>> dd4d44be76b5a8e9c808e60a54d032eccdfe1c59
                     this.render('#main-content', newDiv);
                 }
             },
