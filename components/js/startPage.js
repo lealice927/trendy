@@ -13,7 +13,6 @@ class Trendy{
         const homepage = new homepage();
     }
     addEventListener(){
-        debugger;
         $('.landing').on('click', this.generateHomePage);
         $('.food').on('click', this.generateFoodPage);
         $('.quote').on('click', this.generateQuotePage);
