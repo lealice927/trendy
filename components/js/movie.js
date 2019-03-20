@@ -33,10 +33,10 @@ class Quotes{
         $.ajax(ajaxObject);
     }
     dom(messagePassedIn){        //function returns message from URL
-        const descriptionBox = $('<div>').addClass('quoteBox').append(messagePassedIn);     //creates container for message from URL to be held
+        const descriptionBox = $('<div>').addClass('text-box').append(messagePassedIn);     //creates container for message from URL to be held
         var newPicture = this.randomPicture();
-        const txtBox = $('<div>').addClass('textBox').css("background-image", `url(${newPicture})` ).append(descriptionBox);  //creates container for message from URL to be held
-        const contentBox = $('<div>').addClass('contentBox').append(txtBox); 
+        const txtBox = $('<div>').addClass('image-box').css("background-image", `url(${newPicture})`)  //creates container for message from URL to be held
+        const contentBox = $('<div>').addClass('content-box').append(txtBox, descriptionBox); 
         return contentBox;  
     }
 
