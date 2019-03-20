@@ -1,39 +1,73 @@
 class Food{
-    constructor(ajaxobj, ){
-        this.attribute = 'hot_and_new';
+    constructor( ){
         this.latitude = null;
         this.longitude = null;
-        this.location = 'irvine';
-        this.ajaxObj = {
-            // "async": true,
-            // "crossDomain": true,
-            url: `https://api.yelp.com/v3/businesses/search?latitude=${this.latitude}location=${this.location}&attributes=${this.attribute}`,
-            method: "GET",
-            headers: {
-              'Authorization': 'Bearer LYh8aLnK3aKVWOQycd5DzPTTrzZg1JY_DYYxs_2YPhIKd9ZpJfE8qR0TRS6nTfzUbGp5Rc5PgnwuBotVWQsyH1BNTr-m4KQxpgEqPPnBgQoV1tT17HTU1Rvu2zWQXHYx'
+        this.ajaxObj = null;
+        this.getCurrentLocation = this.getCurrentLocation.bind(this);
+        this.savePosition = this.savePosition.bind(this);
+        this.generateSearchData = this.generateSearchData.bind(this);
+        this.dealData = this.dealData.bind(this);
+        this.addEventListener = this.addEventListener.bind(this);
+    }
+    addEventListener(){
+        $('.close').on('click', this.closeModal);
+    }
+    closeModal(){
+        $('.winModal').css('display','none');
+    }
+    popUpImg(content){
+        debugger;
+        console.log(content);
+        const imageUrl = `url('${content.contentBox.imgBox.url}')`;
+        $('.winModal').css('display','block');
+        $('#map').css('background-image', imageUrl);
+    }
+    generateSearchData(){
+        const ajaxObj = {
+            "async": true,
+            "crossDomain": true,
+            "url": "components/api/yelpproxy.php",
+            data: {
+                term: 'dessert',
+                attribute: 'hot_and_new',
+                sort_by: 'rating'  
             },
-            data:{
-                client_id: 'RVjdHPQEr0T08WhoxqjBQw'
+            "method": "GET",
+            "headers": {
+              "apikey": "LYh8aLnK3aKVWOQycd5DzPTTrzZg1JY_DYYxs_2YPhIKd9ZpJfE8qR0TRS6nTfzUbGp5Rc5PgnwuBotVWQsyH1BNTr-m4KQxpgEqPPnBgQoV1tT17HTU1Rvu2zWQXHYx",
+              "cache-control": "no-cache",
             },
             dataType: 'json',
             success: this.dealData,
             error: this.handleError
-          }
-          this.getCurrentLocation = this.getCurrentLocation.bind(this);
-          this.savePosition = this.savePosition.bind(this);
+        };
+        if(this.latitude && this.longitude){
+            ajaxObj.data.latitude = this.latitude;
+            ajaxObj.data.longitude = this.longitude;
+        } else {
+            ajaxObj.data.location = 'orange county';
+        }
+        this.getDataFromServer(ajaxObj);
     }
-    getDataFromServer(){
-        $.ajax(this.ajaxObj);
+    getDataFromServer(ajaxObj){
+        $.ajax(ajaxObj);
     }
     dealData(response){
-        debugger;
-        console.log(response.coords);
+        console.log(response);
+        const business = response.businesses;
+        for(let i=0; i < business.length; i++){
+            const newContent = new Content(business[i], this.popUpImg);
+            this.render(newContent.makeNewContent(i));
+        }   
+    }
+    render(content){
+        const mainContent = $('#main-content');
+        mainContent.append(content);
     }
     handleError(error){
         console.log(error.statusText);
     } 
     getCurrentLocation(){
-        debugger;
         navigator.geolocation.getCurrentPosition(this.savePosition);
     }
     savePosition(pos){
@@ -41,5 +75,6 @@ class Food{
             this.latitude = crd.latitude.toString();
             this.longitude = crd.longitude.toString();
             console.log('Current location: ',this.latitude, this.longitude);
-    }     
+    }    
 }
+
