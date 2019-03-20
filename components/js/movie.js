@@ -1,10 +1,10 @@
-$(document).ready(initializeApp);
+// $(document).ready(initializeApp);
 
-var startQuotes = null;
-function initializeApp(){
-    startQuotes = new Quotes(); 
-    startQuotes.differentResult();
-}
+// var startQuotes = null;
+// function initializeApp(){
+//     startQuotes = new Quotes(); 
+//     startQuotes.differentResult();
+// }
 
 
 class Quotes{
@@ -12,7 +12,7 @@ class Quotes{
     this.pictures = [];
     }
     differentResult(){
-        for (var index = 0; index < 4; index++){
+        for (var index = 0; index < 10; index++){
         this.getDataFromServer();  
       }
     }
@@ -24,8 +24,8 @@ class Quotes{
             success: (response)=>{
                     let message = response.message;       //extract message from object
                     let quotedMessage = '"' + message + '"';
-                    const newTxtDiv = startQuotes.dom(quotedMessage);      //inputting message from txtDom into startQuotes object 
-                    startQuotes.render("#main-content", newTxtDiv);      //targeting description-box and put message content into render to DOM
+                    const newTxtDiv = this.dom(quotedMessage);      //inputting message from txtDom into startQuotes object 
+                    this.render("#main-content", newTxtDiv);      //targeting description-box and put message content into render to DOM
                 
             },
             error: ()=>alert('Failed to contact server')
@@ -41,7 +41,7 @@ class Quotes{
     }
 
     randomPicture(result){
-        var result = ['imagesQuotes/trump1.gif', 'imagesQuotes/trump2.gif', 'imagesQuotes/trump3.gif', 'imagesQuotes/trump4.gif', 'imagesQuotes/trump5.gif', 'imagesQuotes/trump6.gif', 'imagesQuotes/trump7.gif', 'imagesQuotes/trump8.gif', 'imagesQuotes/trump9.gif', 'imagesQuotes/trump10.gif', 'imagesQuotes/trump11.gif', 'imagesQuotes/trump12.gif'];
+        var result = ['imagesQuotes/trump1.gif', 'imagesQuotes/trump2.gif', 'imagesQuotes/trump3.gif', 'imagesQuotes/trump4.gif', 'imagesQuotes/trump5.gif', 'imagesQuotes/trump6.gif', 'imagesQuotes/trump7.gif', 'imagesQuotes/trump8.gif', 'imagesQuotes/trump9.gif', 'imagesQuotes/trump10.gif', 'imagesQuotes/trump11.gif', 'imagesQuotes/trump12.gif', ...'imagesQuotes/trump23.gif' ];
         var randomPicture = Math.floor(Math.random()*11);
             console.log(result[randomPicture]);  
         return result[randomPicture];
