@@ -1,6 +1,3 @@
-.content-box{
-    height: 30%;
-}
 
 .title-box{
     font-size: 3vh;
@@ -10,7 +7,7 @@
     background-size: cover;
 }
 
-.winModal {
+.modal {
     display: none;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -19,12 +16,12 @@
     width: 50vh;
     height: 50vh;
     overflow: auto; /* Enable scroll if needed */
-    background-color: #fdf2ba; /* Fallback color */
-    background-color: rgb(132, 132, 192, 0.5); /* Black w/ opacity */
+    background-color: rgb(132, 132, 192);
+    /* background-color: rgb(132, 132, 192);  */
   }
   
   /* Modal Content */
-  #map {
+  #picture {
     /* background-color: #fefefe; */
     width: 90%;
     height: 90%;
@@ -32,13 +29,13 @@
     top: 5%;
     left: 5%;
     text-align: center;
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
   }
   
   /* The Close Button */
   .close {
-    color: rgb(40, 40, 88);
+    color: rgb(244, 244, 247);
     float: right;
     font-size: 2em;
     font-weight: bold;
@@ -46,7 +43,7 @@
   
   .close:hover,
   .close:focus {
-    color: rgb(48, 48, 99);
+    color: rgb(198, 198, 201);
     text-decoration: none;
     cursor: pointer;
   }

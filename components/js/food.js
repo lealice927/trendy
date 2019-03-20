@@ -3,24 +3,35 @@ class Food{
         this.latitude = null;
         this.longitude = null;
         this.ajaxObj = null;
+        
         this.getCurrentLocation = this.getCurrentLocation.bind(this);
         this.savePosition = this.savePosition.bind(this);
         this.generateSearchData = this.generateSearchData.bind(this);
         this.dealData = this.dealData.bind(this);
         this.addEventListener = this.addEventListener.bind(this);
+        this.popUpImg = this.popUpImg.bind(this);
+        
     }
     addEventListener(){
         $('.close').on('click', this.closeModal);
     }
     closeModal(){
-        $('.winModal').css('display','none');
+        debugger;
+        $('.modal').css('display','none');
     }
     popUpImg(content){
-        debugger;
-        console.log(content);
         const imageUrl = `url('${content.contentBox.imgBox.url}')`;
-        $('.winModal').css('display','block');
-        $('#map').css('background-image', imageUrl);
+        const modal = $('<div>').addClass('modal');
+        const picture = $('<div>').attr('id', 'picture');
+        debugger;
+        const close = $('<span>').addClass('close');
+        close.html('&times;');
+        picture.append(close);
+        modal.append(picture);
+        modal.css('display','block');
+        picture.css('background-image', imageUrl);
+        this.render(modal);
+        this.addEventListener();
     }
     generateSearchData(){
         const ajaxObj = {
@@ -53,6 +64,7 @@ class Food{
         $.ajax(ajaxObj);
     }
     dealData(response){
+        debugger;
         console.log(response);
         const business = response.businesses;
         for(let i=0; i < business.length; i++){

@@ -1,8 +1,6 @@
-$(document).ready(()=> youtube = new Video());
-
 class Video{
     constructor(){
-        this.getDataFromServer();
+        // this.getDataFromServer();
     }
     getDataFromServer(){
         const ajaxObject = {
@@ -24,8 +22,8 @@ class Video{
                     const minDescription = `${description.substr(0, 150)}...`;
                     const {maxres, standard, medium} = response.items[index].snippet.thumbnails;
                     const link = response.items[index].id;
-                    const newDiv = youtube.newElement(standard.url, numAndTitle, minDescription, link);
-                    youtube.render('#main-content', newDiv);
+                    const newDiv = this.newElement(standard.url, numAndTitle, minDescription, link);
+                    this.render('#main-content', newDiv);
                 }
             },
             error: ()=>alert('Failed to contact server')

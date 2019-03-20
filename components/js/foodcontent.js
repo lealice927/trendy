@@ -10,6 +10,7 @@ class Content{
         const category = this.business.categories[0].title;
         const businessName = $('<p>').text(`# ${i+1} : ${name}`);
         const address = $('<p>').text(location.display_address.join(','));
+        const addressLink = $('<a>').attr('href', `https://www.google.com/maps/place/${location.display_address.join('+')}`)
         const description = $('<p>').html(`Rating: ${rating} <br> Category: ${category} <br>`);
         const titleBox = $('<div>').addClass('title-box');
         const descriptionBox = $('<div>').addClass('description-box');
@@ -18,9 +19,10 @@ class Content{
         const link = $('<a>').attr('href', `https://www.yelp.com/biz/${alias}`);
         const contentBox = $('<div>').addClass('content-box');
 
+        addressLink.append(address);
         titleBox.append(businessName);
         link.append(titleBox);
-        descriptionBox.append(description, address);
+        descriptionBox.append(description, addressLink);
         textBox.append(link, descriptionBox);
         contentBox.append(imgBox, textBox);
 
@@ -30,8 +32,6 @@ class Content{
         return contentBox;
     }
     handleClick(){
-        debugger;
-        console.log(this);
         this.callback(this);
     }
 }
