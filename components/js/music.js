@@ -1,14 +1,7 @@
-$(document).ready(startMusic);
-
-var iTunesMusic = null;
-
-function startMusic() {
-    iTunesMusic = new Music();
-}
 
 class Music {
     constructor() {
-        this.getDataFromServer();
+        // this.getDataFromServer();
     }
     getDataFromServer() {
         const ajaxObject = {
@@ -24,8 +17,8 @@ class Music {
                 var artist = response.feed.results[index].artistName;
                 var songName = response.feed.results[index].name;
                 var iTunesAlbum = response.feed.results[index].url;
-                var newDiv = iTunesMusic.newElement(albumImage, albumName, artist, songName, iTunesAlbum);
-                iTunesMusic.render('#main-content', newDiv)
+                var newDiv = this.newElement(albumImage, albumName, artist, songName, iTunesAlbum);
+                this.render('#main-content', newDiv)
                 }
             },
             // error: 
