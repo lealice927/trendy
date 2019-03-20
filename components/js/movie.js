@@ -1,9 +1,4 @@
-$(document).ready(initializeApp);
 
-var startQuotes = null;
-function initializeApp(){
-    startQuotes = new Quotes(); 
-}
 
 
 class Quotes{
@@ -19,8 +14,9 @@ class Quotes{
             success: (response)=>{
                     let message = response.message;       //extract message from object
                     let quotedMessage = '"' + message + '"';
-                    const newTxtDiv = startQuotes.dom(quotedMessage, index);      //inputting message from txtDom into startQuotes object 
-                    startQuotes.render("#main-content", newTxtDiv);      //targeting description-box and put message content into render to DOM
+
+                    const newTxtDiv = this.dom(quotedMessage);      //inputting message from txtDom into startQuotes object 
+                    this.render("#main-content", newTxtDiv);      //targeting description-box and put message content into render to DOM
                 
             },
             error: ()=>alert('Failed to contact server')

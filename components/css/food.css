@@ -1,0 +1,49 @@
+
+.title-box{
+    font-size: 3vh;
+}
+
+.image-box{
+    background-size: cover;
+}
+
+.modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 25%;
+    top: 25%;
+    width: 50vh;
+    height: 50vh;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(132, 132, 192);
+    /* background-color: rgb(132, 132, 192);  */
+  }
+  
+  /* Modal Content */
+  #picture {
+    /* background-color: #fefefe; */
+    width: 90%;
+    height: 90%;
+    position: relative;
+    top: 5%;
+    left: 5%;
+    text-align: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: rgb(244, 244, 247);
+    float: right;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: rgb(198, 198, 201);
+    text-decoration: none;
+    cursor: pointer;
+  }
