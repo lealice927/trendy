@@ -1,0 +1,49 @@
+
+
+.quoteBox{
+    position: relative;
+    visibility: hidden;
+    font-size: 3.5vh;
+    text-shadow: 3px 3px #ff0000;
+    word-spacing: 3px;
+    padding: 13px;
+
+}
+
+.textBox:hover .quoteBox {
+    visibility: visible;
+
+}
+
+
+.textBox{
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: .5s ease;
+    background-image: url(https://i.gifer.com/BU0.gif); 
+    background-size: cover;
+}
+
+.contentBox{
+    width: 50%;
+    height: 50%;
+    border-bottom: 6px solid red;
+    padding:10px;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+  }
