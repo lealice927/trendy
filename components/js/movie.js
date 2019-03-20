@@ -12,7 +12,7 @@ class Quotes{
     this.pictures = [];
     }
     differentResult(){
-        for (var index = 0; index < 4; index++){
+        for (var index = 0; index < 10; index++){
         this.getDataFromServer();  
       }
     }
@@ -41,7 +41,7 @@ class Quotes{
     }
 
     randomPicture(result){
-        var result = ['imagesQuotes/trump1.gif', 'imagesQuotes/trump2.gif', 'imagesQuotes/trump3.gif', 'imagesQuotes/trump4.gif', 'imagesQuotes/trump5.gif', 'imagesQuotes/trump6.gif', 'imagesQuotes/trump7.gif', 'imagesQuotes/trump8.gif', 'imagesQuotes/trump9.gif', 'imagesQuotes/trump10.gif', 'imagesQuotes/trump11.gif', 'imagesQuotes/trump12.gif'];
+        var result = ['imagesQuotes/trump1.gif', 'imagesQuotes/trump2.gif', 'imagesQuotes/trump3.gif', 'imagesQuotes/trump4.gif', 'imagesQuotes/trump5.gif', 'imagesQuotes/trump6.gif', 'imagesQuotes/trump7.gif', 'imagesQuotes/trump8.gif', 'imagesQuotes/trump9.gif', 'imagesQuotes/trump10.gif', 'imagesQuotes/trump11.gif', 'imagesQuotes/trump12.gif', ...'imagesQuotes/trump23.gif' ];
         var randomPicture = Math.floor(Math.random()*11);
             console.log(result[randomPicture]);  
         return result[randomPicture];
