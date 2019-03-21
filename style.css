@@ -1,7 +1,8 @@
 body {
     margin: 0px;
     position: relative;
-    background-color: lavender;
+    background-color: #c0cd79;
+
 }
 .nav-bar{
     height: 5vh;
@@ -41,21 +42,22 @@ body {
     width: 80%;
     position: relative;
     left: 20%;
+    background-color: #c0cd79;
 }
 
 .topics-title {
-    background-color: rgb(132, 132, 192);
+    background-color: #173e43;
     width: 80%;
     height: 8%;
     text-align: center;
     font-size: 5vh;
-    color: white;
+    color: #dddfd4;
 }
 
 #main-content {
     width: 80%;
     height: 100%;
-    background-color: rgb(153, 153, 212);
+    background-color: #173e43;
     vertical-align: middle;
     font-weight: bolder;
     font-size: 2vh;
@@ -101,7 +103,7 @@ img {
     padding-left: 5%;
 }
 
-a, .title-box {
+a, .title-box, .title-box p {
     color: rgb(40, 40, 88);
     text-decoration: none;
     font-size: 2vh;

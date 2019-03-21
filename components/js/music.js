@@ -10,8 +10,8 @@ class Music {
             method: "GET",
             success: (response) => {
                 console.log(response);
-                // debugger;
-                for (let index = 0; index <= 10; index++) {
+
+                for (let index = 0; index < 10; index++) {
                 const albumImage = response.feed.results[index].artworkUrl100;
                 const albumName = `# ${index+1} :  ${response.feed.results[index].collectionName}`;
                 const artist = response.feed.results[index].artistName;
@@ -21,7 +21,7 @@ class Music {
                 this.render('#main-content', newDiv)
                 }
             },
-            // error: 
+            error: ()=>alert('Failed to contact server')
         } 
         $.ajax(ajaxObject);
     }

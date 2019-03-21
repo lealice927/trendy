@@ -1,6 +1,12 @@
 class Trendy{
     constructor(){
         this.topicText = $('.topics-title');
+        this.callback  = {
+            food: this.generateFoodPage,
+            quote: this.generateQuotePage,
+            video: this.generateVideoPage,
+            music: this.generateMusicPage
+        }
         this.addEventListener = this.addEventListener.bind(this);
         this.generateHomePage = this.generateHomePage.bind(this);
         this.generateFoodPage = this.generateFoodPage.bind(this);
@@ -26,6 +32,7 @@ class Trendy{
         $('.music').on('click', this.generateMusicPage);
         $('.video').on('click', this.generateVideoPage);
     }
+
     homeClickCallBack(childClicked){
         debugger;
         const boxClicked = childClicked.newElement[0].innerText;
@@ -43,12 +50,17 @@ class Trendy{
             trendy.generateVideoPage();
         }
     }
+    emptyHomeBody(){
+        $('.main').remove();
+    }
     generateHomePage(){
-        this.emptyBody();
+        debugger;
+        this.emptyHomeBody();
         this.hideNavBar();
-        const homepage = new LandingPage(this.homeClickCallBack);
+        const homepage = new LandingPage(this.callback);
     }
     generateFoodPage(){
+        this.emptyHomeBody();
         this.emptyBody();
         this.showNavBar();
         const food = new Food();
@@ -56,6 +68,7 @@ class Trendy{
         this.topicText.text('Top Trendy Foods');
     }
     generateMusicPage(){
+        this.emptyHomeBody();
         this.emptyBody();
         this.showNavBar();
         const music = new Music();
@@ -63,6 +76,7 @@ class Trendy{
         this.topicText.text('Top Trendy Musics');
     }
     generateVideoPage(){
+        this.emptyHomeBody();
         this.emptyBody();
         this.showNavBar();
         const youtube = new Video();
@@ -70,6 +84,7 @@ class Trendy{
         this.topicText.text('Top Trendy Videos');
     }
     generateQuotePage(){
+        this.emptyHomeBody();
         this.emptyBody();
         this.showNavBar();
         const quote = new Quotes();
