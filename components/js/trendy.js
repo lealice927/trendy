@@ -1,6 +1,6 @@
 class Trendy{
     constructor(){
-        this.tpoicText = $('.topics-title');
+        this.topicText = $('.topics-title');
         this.addEventListener = this.addEventListener.bind(this);
         this.generateHomePage = this.generateHomePage.bind(this);
         this.generateFoodPage = this.generateFoodPage.bind(this);
@@ -8,44 +8,58 @@ class Trendy{
         this.generateMusicPage = this.generateMusicPage.bind(this);
         this.generateVideoPage = this.generateVideoPage.bind(this);
     }
-    generateHomePage(){
-        this.emptyBody();
-        const homepage = new homepage();
+    emptyBody(){
+        $('#main-content').empty();
+    }
+    showNavBar(){
+        $('.navbar').show();
+        $('.main-body').show();
+    }
+    hideNavBar(){
+        $('.navbar').hide();
+        $('.main-body').hide();
     }
     addEventListener(){
-        debugger;
         $('.landing').on('click', this.generateHomePage);
         $('.food').on('click', this.generateFoodPage);
         $('.quote').on('click', this.generateQuotePage);
         $('.music').on('click', this.generateMusicPage);
         $('.video').on('click', this.generateVideoPage);
     }
-    generateFoodPage(){
-        debugger;
+    homeClickCallBack(childClicked){
+        console.log(childClicked);
+    }
+    generateHomePage(){
         this.emptyBody();
+        this.hideNavBar();
+        const homepage = new LandingPage(this.homeClickCallBack);
+    }
+    generateFoodPage(){
+        this.emptyBody();
+        this.showNavBar();
         const food = new Food();
         food.generateSearchData();
-        this.tpoicText.text('Top Trendy Foods');
+        this.topicText.text('Top Trendy Foods');
     }
     generateMusicPage(){
         this.emptyBody();
+        this.showNavBar();
         const music = new Music();
         music.getDataFromServer();
-        this.tpoicText.text('Top Trendy Musics');
+        this.topicText.text('Top Trendy Musics');
     }
     generateVideoPage(){
         this.emptyBody();
+        this.showNavBar();
         const youtube = new Video();
         youtube.getDataFromServer();
-        this.tpoicText.text('Top Trendy Videos');
+        this.topicText.text('Top Trendy Videos');
     }
     generateQuotePage(){
         this.emptyBody();
+        this.showNavBar();
         const quote = new Quotes();
-        quote.differentResult();
-        this.tpoicText.text('Top Trump Quotes');
-    }
-    emptyBody(){
-        $('#main-content').empty();
+        quote.getDataFromServer();
+        this.topicText.text('Top Trump Quotes');
     }
 }

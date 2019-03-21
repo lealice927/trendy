@@ -16,22 +16,22 @@ class Food{
         $('.close').on('click', this.closeModal);
     }
     closeModal(){
-        debugger;
         $('.modal').css('display','none');
     }
     popUpImg(content){
         const imageUrl = `url('${content.contentBox.imgBox.url}')`;
-        const modal = $('<div>').addClass('modal');
+        // const modal = $('<div>').addClass('modal');
         const picture = $('<div>').attr('id', 'picture');
-        debugger;
-        const close = $('<span>').addClass('close');
-        close.html('&times;');
-        picture.append(close);
-        modal.append(picture);
-        modal.css('display','block');
+        // debugger;
+        // const close = $('<span>').addClass('close');
+        // close.html('&times;');
+        // picture.append(close);
+        // modal.append(picture);
+        // modal.css('display','block');
         picture.css('background-image', imageUrl);
-        this.render(modal);
-        this.addEventListener();
+        // this.render(modal);
+        // this.addEventListener();
+        const modal = new Modal(picture);
     }
     generateSearchData(){
         const ajaxObj = {
@@ -45,8 +45,8 @@ class Food{
             },
             "method": "GET",
             "headers": {
-              "apikey": "LYh8aLnK3aKVWOQycd5DzPTTrzZg1JY_DYYxs_2YPhIKd9ZpJfE8qR0TRS6nTfzUbGp5Rc5PgnwuBotVWQsyH1BNTr-m4KQxpgEqPPnBgQoV1tT17HTU1Rvu2zWQXHYx",
-              "cache-control": "no-cache",
+            "apikey": "LYh8aLnK3aKVWOQycd5DzPTTrzZg1JY_DYYxs_2YPhIKd9ZpJfE8qR0TRS6nTfzUbGp5Rc5PgnwuBotVWQsyH1BNTr-m4KQxpgEqPPnBgQoV1tT17HTU1Rvu2zWQXHYx",
+            "cache-control": "no-cache",
             },
             dataType: 'json',
             success: this.dealData,

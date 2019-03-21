@@ -10,15 +10,15 @@ class Music {
             method: "GET",
             success: (response) => {
                 console.log(response);
-                // debugger;
+
                 for (let index = 0; index < 10; index++) {
                 const albumImage = response.feed.results[index].artworkUrl100;
                 const albumName = `# ${index+1} :  ${response.feed.results[index].collectionName}`;
                 const artist = response.feed.results[index].artistName;
                 const songName = response.feed.results[index].name;
                 const iTunesAlbum = response.feed.results[index].url;
-                const newDiv = iTunesMusic.newElement(albumImage, albumName, artist, songName, iTunesAlbum);
-                iTunesMusic.render('#main-content', newDiv)
+                const newDiv = this.newElement(albumImage, albumName, artist, songName, iTunesAlbum);
+                this.render('#main-content', newDiv)
                 }
             },
             error: ()=>alert('Failed to contact server')
