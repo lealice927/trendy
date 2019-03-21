@@ -32,6 +32,24 @@ class Trendy{
         $('.music').on('click', this.generateMusicPage);
         $('.video').on('click', this.generateVideoPage);
     }
+
+    homeClickCallBack(childClicked){
+        debugger;
+        const boxClicked = childClicked.newElement[0].innerText;
+        if(boxClicked === 'Music'){
+            $('.main').remove();
+            trendy.generateMusicPage();
+        }else if(boxClicked === 'Food'){
+            $('.main').remove();
+            trendy.generateFoodPage();
+        }else if(boxClicked === 'Quotes'){
+            $('.main').remove();
+            trendy.generateQuotePage();
+        }else if(boxClicked === 'Videos'){
+            $('.main').remove();
+            trendy.generateVideoPage();
+        }
+    }
     emptyHomeBody(){
         $('.main').remove();
     }
