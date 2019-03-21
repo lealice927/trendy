@@ -1,12 +1,17 @@
 
 class LandingPage {
     constructor(clickCallBack){
-        this.elementClick = clickCallBack;
+        this.callback={
+            food: clickCallBack.food,
+            music: clickCallBack.music,
+            video: clickCallBack.video,
+            quote: clickCallBack.quote
+        }
         this.element = null;
         this.newLanding = this.createDomElements();
         this.render('body', this.newLanding);
-
-        this.childClickHandler = this.childClickHandler.bind(this);
+        this.createDomElements = this.createDomElements.bind(this);
+        // this.childClickHandler = this.childClickHandler.bind(this);
     }
     createDomElements(){
         const titleText = $('<div>').addClass('title-text').text('Trendy');
@@ -56,8 +61,8 @@ class LandingPage {
         console.log(this);
         const containerText = $(this).find('.topic-text').text();
         console.log(containerText);
+        div = containerText;
+        omg();
     }
-    childClickHandler(blockText){
-        this.newLanding(blockText);
-    }
+
 }
