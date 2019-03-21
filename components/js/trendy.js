@@ -1,12 +1,6 @@
 class Trendy{
     constructor(){
         this.topicText = $('.topics-title');
-        this.callback  = {
-            food: this.generateFoodPage,
-            quote: this.generateQuotePage,
-            video: this.generateVideoPage,
-            music: this.generateMusicPage
-        }
         this.addEventListener = this.addEventListener.bind(this);
         this.generateHomePage = this.generateHomePage.bind(this);
         this.generateFoodPage = this.generateFoodPage.bind(this);
@@ -34,7 +28,6 @@ class Trendy{
     }
 
     homeClickCallBack(childClicked){
-        debugger;
         const boxClicked = childClicked.newElement[0].innerText;
         if(boxClicked === 'Music'){
             $('.main').remove();
@@ -54,10 +47,9 @@ class Trendy{
         $('.main').remove();
     }
     generateHomePage(){
-        debugger;
         this.emptyHomeBody();
         this.hideNavBar();
-        const homepage = new LandingPage(this.callback);
+        const homepage = new LandingPage(this.homeClickCallBack);
     }
     generateFoodPage(){
         this.emptyHomeBody();

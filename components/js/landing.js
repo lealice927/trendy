@@ -1,13 +1,7 @@
 
 class LandingPage {
     constructor(clickCallBack){
-        this.callback={
-            food: clickCallBack.food,
-            music: clickCallBack.music,
-            video: clickCallBack.video,
-            quote: clickCallBack.quote
-        }
-        this.element = null;
+        this.elementClick = clickCallBack;
         this.newLanding = this.createDomElements();
         this.render('body', this.newLanding);
     }
