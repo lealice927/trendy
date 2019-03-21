@@ -41,7 +41,7 @@ class Trendy{
     generateQuotePage(){
         this.emptyBody();
         const quote = new Quotes();
-        quote.differentResult();
+        quote.getDataFromServer();
         this.tpoicText.text('Top Trump Quotes');
     }
     emptyBody(){
