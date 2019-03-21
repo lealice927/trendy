@@ -64,7 +64,6 @@ class Food{
         $.ajax(ajaxObj);
     }
     dealData(response){
-        debugger;
         console.log(response);
         const business = response.businesses;
         for(let i=0; i < business.length; i++){
