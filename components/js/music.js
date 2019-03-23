@@ -1,16 +1,11 @@
 
 class Music {
-    constructor() {
-        // this.getDataFromServer();
-    }
     getDataFromServer() {
         const ajaxObject = {
             dataType: "json",
             url: "components/php/itunes.php",
             method: "GET",
             success: (response) => {
-                console.log(response);
-
                 for (let index = 0; index < 10; index++) {
                 const albumImage = response.feed.results[index].artworkUrl100;
                 const albumName = `# ${index+1} :  ${response.feed.results[index].collectionName}`;
