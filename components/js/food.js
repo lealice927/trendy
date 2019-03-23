@@ -3,34 +3,16 @@ class Food{
         this.latitude = null;
         this.longitude = null;
         this.ajaxObj = null;
-        
         this.getCurrentLocation = this.getCurrentLocation.bind(this);
         this.savePosition = this.savePosition.bind(this);
         this.generateSearchData = this.generateSearchData.bind(this);
         this.dealData = this.dealData.bind(this);
-        this.addEventListener = this.addEventListener.bind(this);
         this.popUpImg = this.popUpImg.bind(this);
-        
-    }
-    addEventListener(){
-        $('.close').on('click', this.closeModal);
-    }
-    closeModal(){
-        $('.modal').css('display','none');
     }
     popUpImg(content){
         const imageUrl = `url('${content.contentBox.imgBox.url}')`;
-        // const modal = $('<div>').addClass('modal');
         const picture = $('<div>').attr('id', 'picture');
-        // debugger;
-        // const close = $('<span>').addClass('close');
-        // close.html('&times;');
-        // picture.append(close);
-        // modal.append(picture);
-        // modal.css('display','block');
         picture.css('background-image', imageUrl);
-        // this.render(modal);
-        // this.addEventListener();
         const modal = new Modal(picture);
     }
     generateSearchData(){
@@ -41,7 +23,7 @@ class Food{
             data: {
                 term: 'dessert',
                 attribute: 'hot_and_new',
-                sort_by: 'rating'  
+                sort_by: 'rating'
             },
             "method": "GET",
             "headers": {
@@ -64,10 +46,9 @@ class Food{
         $.ajax(ajaxObj);
     }
     dealData(response){
-        console.log(response);
         const business = response.businesses;
         for(let i=0; i < business.length; i++){
-            const newContent = new Content(business[i], this.popUpImg);
+            const newContent = new FoodContent(business[i], this.popUpImg);
             this.render(newContent.makeNewContent(i));
         }   
     }
@@ -76,16 +57,16 @@ class Food{
         mainContent.append(content);
     }
     handleError(error){
-        console.log(error.statusText);
+        const errorMessage = $('<div>').text(error);
+        const errorModal = new Modal(errorMessage);
     } 
     getCurrentLocation(){
         navigator.geolocation.getCurrentPosition(this.savePosition);
     }
     savePosition(pos){
-            const crd = pos.coords;
-            this.latitude = crd.latitude.toString();
-            this.longitude = crd.longitude.toString();
-            console.log('Current location: ',this.latitude, this.longitude);
+        const crd = pos.coords;
+        this.latitude = crd.latitude.toString();
+        this.longitude = crd.longitude.toString();
     }    
 }
 

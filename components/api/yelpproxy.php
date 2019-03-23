@@ -37,7 +37,7 @@ $SEARCH_PATH = "/v3/businesses/search";
 $BUSINESS_PATH = "/v3/businesses/";  // Business ID will come after slash.
 
 // Defaults for our simple example.
-$DEFAULT_TERM = "dinner";
+$DEFAULT_TERM = "top";
 $DEFAULT_LOCATION = "San Francisco, CA";
 $SEARCH_LIMIT = 10;
 
