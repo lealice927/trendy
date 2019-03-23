@@ -56,8 +56,8 @@ class Food{
         const mainContent = $('#main-content');
         mainContent.append(content);
     }
-    handleError(error){
-        const errorMessage = $('<div>').text(error);
+    handleError(){
+        const errorMessage = $('<div>').text(`Can't not connect to server`);
         const errorModal = new Modal(errorMessage);
     } 
     getCurrentLocation(){
