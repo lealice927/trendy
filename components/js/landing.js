@@ -16,7 +16,7 @@ class LandingPage {
         const foodMusicRow = $('<div>').addClass('topic-row').append(foodTopics.newElement, musicTopics.newElement);
 
         const quoteTopics = new LandingElement('fas fa-film', 'Movie', this.elementClick);
-        const videoTopics = new LandingElement('fab fa-youtube', 'Videos', this.elementClick);
+        const videoTopics = new LandingElement('fab fa-youtube', 'Video', this.elementClick);
         const quoteVideoRow = $('<div>').addClass('topic-row').append(quoteTopics.newElement, videoTopics.newElement);
         
         const topicBox = $('<div>').addClass('topic-box').append(foodMusicRow, quoteVideoRow);

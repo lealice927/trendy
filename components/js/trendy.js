@@ -2,14 +2,46 @@ class Trendy{
     constructor(){
         this.topicText = $('.topics-title');
         this.addEventListener = this.addEventListener.bind(this);
+        this.linkClickCallBack = this.linkClickCallBack.bind(this);
         this.generateHomePage = this.generateHomePage.bind(this);
-        this.generateFoodPage = this.generateFoodPage.bind(this);
-        this.generateQuotePage = this.generateQuotePage.bind(this);
-        this.generateMusicPage = this.generateMusicPage.bind(this);
-        this.generateVideoPage = this.generateVideoPage.bind(this);
+        this.generateNewPage = this.generateNewPage.bind(this);
+    }
+    addEventListener(){
+        $('.landing').on('click', this.generateHomePage);
+        $('.food').on('click', this.linkClickCallBack);
+        $('.quote').on('click', this.linkClickCallBack);
+        $('.music').on('click', this.linkClickCallBack);
+        $('.video').on('click', this.linkClickCallBack);
+    }
+    linkClickCallBack(childClicked){
+        let boxClicked;
+        if(childClicked.newElement){
+            boxClicked = childClicked.newElement[0].innerText;
+        }else{
+            boxClicked = childClicked.target.textContent;
+        }
+        this.emptyBody();
+        this.showNavBar();    
+        this.emptyHomeBody();
+        switch(boxClicked){
+            case 'Music':
+                this.generateNewPage(Music, 'Top Trendy Music');
+                break;
+            case 'Food':
+                this.generateNewPage(Food, 'Top Trendy Food');
+                break;
+            case 'Movie':
+                this.generateNewPage(Quotes, 'Top Trendy Trump Quotes');
+                break;
+            case 'Video':
+                this.generateNewPage(Video, 'Top Trendy Videos');
+        }
     }
     emptyBody(){
         $('#main-content').empty();
+    }
+    emptyHomeBody(){
+        $('.main').remove();
     }
     showNavBar(){
         $('.navbar').show();
@@ -19,68 +51,14 @@ class Trendy{
         $('.navbar').hide();
         $('.main-body').hide();
     }
-    addEventListener(){
-        $('.landing').on('click', this.generateHomePage);
-        $('.food').on('click', this.generateFoodPage);
-        $('.quote').on('click', this.generateQuotePage);
-        $('.music').on('click', this.generateMusicPage);
-        $('.video').on('click', this.generateVideoPage);
-    }
-
-    homeClickCallBack(childClicked){
-        const boxClicked = childClicked.newElement[0].innerText;
-        if(boxClicked === 'Music'){
-            $('.main').remove();
-            trendy.generateMusicPage();
-        }else if(boxClicked === 'Food'){
-            $('.main').remove();
-            trendy.generateFoodPage();
-        }else if(boxClicked === 'Quotes'){
-            $('.main').remove();
-            trendy.generateQuotePage();
-        }else if(boxClicked === 'Videos'){
-            $('.main').remove();
-            trendy.generateVideoPage();
-        }
-    }
-    emptyHomeBody(){
-        $('.main').remove();
-    }
     generateHomePage(){
         this.emptyHomeBody();
         this.hideNavBar();
-        const homepage = new LandingPage(this.homeClickCallBack);
+        const homepage = new LandingPage(this.linkClickCallBack);
     }
-    generateFoodPage(){
-        this.emptyHomeBody();
-        this.emptyBody();
-        this.showNavBar();
-        const food = new Food();
-        food.generateSearchData();
-        this.topicText.text('Top Trendy Foods');
-    }
-    generateMusicPage(){
-        this.emptyHomeBody();
-        this.emptyBody();
-        this.showNavBar();
-        const music = new Music();
-        music.getDataFromServer();
-        this.topicText.text('Top Trendy Musics');
-    }
-    generateVideoPage(){
-        this.emptyHomeBody();
-        this.emptyBody();
-        this.showNavBar();
-        const youtube = new Video();
-        youtube.getDataFromServer();
-        this.topicText.text('Top Trendy Videos');
-    }
-    generateQuotePage(){
-        this.emptyHomeBody();
-        this.emptyBody();
-        this.showNavBar();
-        const quote = new Quotes();
-        quote.getDataFromServer();
-        this.topicText.text('Top Trump Quotes');
+    generateNewPage(page, text){
+        const newPage = new page();
+        newPage.getDataFromServer();
+        this.topicText.text(text);
     }
 }
