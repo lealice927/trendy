@@ -5,7 +5,7 @@ class LandingElement {
         this.newElement = this.createDomElements(faIcon, containerText, this.childClickHandler);
     }
     createDomElements(faIcon, containerText, clickCallBack){
-        const fa = $('<i>').addClass(`fas fa-${faIcon}`);
+        const fa = $('<i>').addClass(faIcon);
         const topicIcon = $('<div>').addClass('topic-icon').append(fa);
         const topicText = $('<div>').addClass('topic-text').text(containerText);
         const topics = $('<div>').addClass('topics').append(topicIcon, topicText).on('click', clickCallBack);

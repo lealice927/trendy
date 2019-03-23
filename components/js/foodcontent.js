@@ -1,4 +1,4 @@
-class Content{
+class FoodContent{
     constructor(info, callback){
         this.business = info;
         this.contentBox = {};

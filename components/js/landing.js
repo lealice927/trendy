@@ -11,12 +11,12 @@ class LandingPage {
         const titleBackground = $('<div>').addClass('title-background').append(titleText, subtitleText);
         const title = $('<div>').addClass('title').append(titleBackground);
 
-        const foodTopics = new LandingElement('utensils', 'Food', this.elementClick);
-        const musicTopics = new LandingElement('music', 'Music', this.elementClick);
+        const foodTopics = new LandingElement('fas fa-ice-cream', 'Food', this.elementClick);
+        const musicTopics = new LandingElement('fas fa-music', 'Music', this.elementClick);
         const foodMusicRow = $('<div>').addClass('topic-row').append(foodTopics.newElement, musicTopics.newElement);
 
-        const quoteTopics = new LandingElement('quote-right', 'Quotes', this.elementClick);
-        const videoTopics = new LandingElement('film', 'Videos', this.elementClick);
+        const quoteTopics = new LandingElement('fas fa-film', 'Movie', this.elementClick);
+        const videoTopics = new LandingElement('fab fa-youtube', 'Videos', this.elementClick);
         const quoteVideoRow = $('<div>').addClass('topic-row').append(quoteTopics.newElement, videoTopics.newElement);
         
         const topicBox = $('<div>').addClass('topic-box').append(foodMusicRow, quoteVideoRow);
