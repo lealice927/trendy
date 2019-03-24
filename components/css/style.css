@@ -14,7 +14,7 @@ body {
     border: none;  
 }
 .rockimg{
-    width:100%;
+    width:90%;
     display: inline-block;
     padding: 1vmin 0;
     vertical-align: top;
@@ -167,7 +167,6 @@ a {
 
 .error-message {
     font-size: 6vmin;
-
     border: 1px solid red; 
     color: white;
     text-align: center;
@@ -366,11 +365,12 @@ a {
         padding: 0.5vmin;
         margin: 2vmin 0 0 3vmin;
     }
+
     .topics{
         height: 50%;
     }
     .rockimg{
-        width: 200%;
+        width: 180%;
     }
     .title-box, .description-box{
         font-size: 4vmin;
