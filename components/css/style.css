@@ -301,6 +301,7 @@ a {
     background: #c0cd79;
     border: 1px solid #8acac9;
     z-index: 1;
+    outline: none;
 }
 
 @keyframes wiggle {

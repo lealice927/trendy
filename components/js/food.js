@@ -3,6 +3,8 @@ class Food{
         this.latitude = null;
         this.longitude = null;
         this.ajaxObj = null;
+        this.nextTen = [];
+        this.mainContent = $('#main-content');
 
         this.getCurrentLocation = this.getCurrentLocation.bind(this);
         this.savePosition = this.savePosition.bind(this);
@@ -10,6 +12,7 @@ class Food{
         this.dealData = this.dealData.bind(this);
         this.popUpImg = this.popUpImg.bind(this);
         this.popUpYelp = this.popUpYelp.bind(this);
+        this.addMoreResults = this.addMoreResults.bind(this);
 
         this.callback = {
             img: this.popUpImg,
@@ -61,12 +64,17 @@ class Food{
         const business = response.businesses;
         for(let i=0; i < business.length; i++){
             const newContent = new FoodContent(business[i], this.callback);
-            this.render(newContent.makeNewContent(i));
+            if(i < 10){
+                this.render(newContent.makeNewContent(i)); 
+            } else {
+                this.nextTen.push(newContent.makeNewContent(i));
+            }
+            
         }   
     }
     render(content){
-        const mainContent = $('#main-content');
-        mainContent.append(content);
+        debugger;
+        this.mainContent.append(content);
     }
     handleError(){
         const errorimg = $('<img>').attr({
@@ -86,10 +94,13 @@ class Food{
         this.longitude = crd.longitude;
     }
     addMoreResults(){
-        // this.getDataFromServer(this.pageToken);
+        debugger;
+        for( let index=0; index < this.nextTen.length; index++){
+            this.render(this.nextTen[index]);
+        }
     }
     addMoreResultsButton(){
-        const addButton = $('<button>').addClass('add-button').text('Next 10').on('click', this.addMoreResults);
+        const addButton = $('<button>').addClass('add-button').text('More').on('click', this.addMoreResults);
         this.render(addButton);
     }    
 }

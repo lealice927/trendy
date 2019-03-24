@@ -39,7 +39,7 @@ $BUSINESS_PATH = "/v3/businesses/";  // Business ID will come after slash.
 // Defaults for our simple example.
 $DEFAULT_TERM = "top";
 $DEFAULT_LOCATION = "San Francisco, CA";
-$SEARCH_LIMIT = 10;
+$SEARCH_LIMIT = 25;
 
 
 /** 
@@ -62,7 +62,7 @@ function request($host, $path, $url_params = array()) {
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,  // Capture response.
             CURLOPT_ENCODING => "",  // Accept gzip/deflate/whatever.
-            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_MAXREDIRS => 25,
             CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_TIMEOUT => 30,
