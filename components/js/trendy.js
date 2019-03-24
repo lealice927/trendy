@@ -7,6 +7,7 @@ class Trendy{
         this.linkClickCallBack = this.linkClickCallBack.bind(this);
         this.generateHomePage = this.generateHomePage.bind(this);
         this.generateNewPage = this.generateNewPage.bind(this);
+        this.menuClicked = this.menuClicked.bind(this);
     }
     addEventListener(){
         $('.landing').on('click', this.generateHomePage);
@@ -14,6 +15,7 @@ class Trendy{
         $('.movie').on('click', this.linkClickCallBack);
         $('.music').on('click', this.linkClickCallBack);
         $('.video').on('click', this.linkClickCallBack);
+        $('.nav-menu').on('click', this.menuClicked);
     }
     linkClickCallBack(childClicked){
         const boxClicked = childClicked.elementName === undefined ? childClicked.target.textContent : childClicked.elementName;
@@ -48,6 +50,9 @@ class Trendy{
     hideNavBar(){
         this.navbar.hide();
         this.mainBody.hide();
+    }
+    menuClicked(){
+        $('.nav').toggle();
     }
     generateHomePage(){
         this.emptyHomeBody();
