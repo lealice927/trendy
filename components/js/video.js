@@ -38,6 +38,14 @@ class Video{
     handleError(){
         const errorMessage = $('<p>').text('Failed to contact server').addClass('error-message modalContent');
         const errorModal = new Modal(errorMessage);
+
+            //const errorimg = $('<img>').attr({
+            //     'src': 'components/css/images/serverdown.png',
+            //     'width' : '100%'
+            //     });
+            // const errorMessage = $('<div>').addClass('error-message');
+            // errorMessage.append(errorimg);
+            // const errorModal = new Modal(errorMessage);
     }
     newElement(image, title, description, link){
         const imageBox = $('<div>').addClass('image-box').css('background-image', `url(${image})`);

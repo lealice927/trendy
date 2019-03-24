@@ -69,7 +69,12 @@ class Food{
         mainContent.append(content);
     }
     handleError(){
-        const errorMessage = $('<div>').text(`Can't not connect to server`);
+        const errorimg = $('<img>').attr({
+            'src': 'components/css/images/serverdown.png',
+            'width' : '100%'
+            });
+        const errorMessage = $('<div>').addClass('error-message');
+        errorMessage.append(errorimg);
         const errorModal = new Modal(errorMessage);
     } 
     getCurrentLocation(){
