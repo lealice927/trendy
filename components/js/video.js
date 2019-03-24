@@ -2,6 +2,7 @@
 class Video{
     constructor(){
         this.handleSuccess = this.handleSuccess.bind(this);
+        this.handleError = this.handleError.bind(this);
     }
     getDataFromServer(){
         const ajaxObject = {
@@ -18,7 +19,7 @@ class Video{
             success: (response)=>{
                 this.handleSuccess(response);
             },
-            error: ()=>alert('Failed to contact server')
+            error: this.handleError
         }
         $.ajax(ajaxObject);
     }

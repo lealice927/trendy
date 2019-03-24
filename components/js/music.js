@@ -12,7 +12,7 @@ class Music {
             success: (response) => {
                 this.handleSuccess(response);
             },
-            error: this.handleError()
+            error: this.handleError
         } 
         $.ajax(ajaxObject);
     }
