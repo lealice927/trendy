@@ -9,7 +9,7 @@ class Trendy{
     addEventListener(){
         $('.landing').on('click', this.generateHomePage);
         $('.food').on('click', this.linkClickCallBack);
-        $('.quote').on('click', this.linkClickCallBack);
+        $('.movie').on('click', this.linkClickCallBack);
         $('.music').on('click', this.linkClickCallBack);
         $('.video').on('click', this.linkClickCallBack);
     }
@@ -25,16 +25,16 @@ class Trendy{
         this.emptyHomeBody();
         switch(boxClicked){
             case 'Music':
-                this.generateNewPage(Music, 'Top Trendy Music');
+                this.generateNewPage(Music, 'Top Music');
                 break;
             case 'Food':
-                this.generateNewPage(Food, 'Top Trendy Food');
+                this.generateNewPage(Food, 'Top Food');
                 break;
             case 'Movie':
-                this.generateNewPage(Quotes, 'Top Trendy Trump Quotes');
+                this.generateNewPage(Movie, 'Top Movies');
                 break;
             case 'Video':
-                this.generateNewPage(Video, 'Top Trendy Videos');
+                this.generateNewPage(Video, 'Top Videos');
         }
     }
     emptyBody(){

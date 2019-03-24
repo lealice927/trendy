@@ -6,9 +6,8 @@ class LandingPage {
         this.render('body', this.newLanding);
     }
     createDomElements(){
-        const titleText = $('<div>').addClass('title-text');//.text('Trendy');
+        const titleText = $('<div>').addClass('title-text');
         const titleimg =$('<img>').addClass('titleimg').attr('src', 'components/css/images/rock.png');
-        debugger;
         titleText.append(titleimg);
         const subtitleText = $('<div>').addClass('subtitle-text').text('Click and bumb up the top topics!');
         const titleBackground = $('<div>').addClass('title-background').append(titleText, subtitleText);
