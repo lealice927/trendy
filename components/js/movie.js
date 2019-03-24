@@ -17,7 +17,7 @@ class Movie {
         $.ajax(ajaxObject);
     }
     handleSuccess(){
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < 25; index++) {
             const movieImage = response.feed.results[index].artworkUrl100;
             const movieName = `# ${index + 1} :  ${response.feed.results[index].name}`;
             const director = response.feed.results[index].artistName;
