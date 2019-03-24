@@ -7,7 +7,7 @@ class LandingPage {
         const titleText = $('<div>').addClass('title-text');
         const titleimg =$('<img>').addClass('titleimg').attr('src', 'components/css/images/rock.png');
         titleText.append(titleimg);
-        const subtitleText = $('<div>').addClass('subtitle-text').text('Click and bumb up the top topics!');
+        const subtitleText = $('<div>').addClass('subtitle-text').text('Click a topic and bump up what\'s trending!');
         const titleBackground = $('<div>').addClass('title-background').append(titleText, subtitleText);
         const title = $('<div>').addClass('title').append(titleBackground);
 
