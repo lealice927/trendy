@@ -3,15 +3,27 @@ class Food{
         this.latitude = null;
         this.longitude = null;
         this.ajaxObj = null;
+
         this.getCurrentLocation = this.getCurrentLocation.bind(this);
         this.savePosition = this.savePosition.bind(this);
         this.generateSearchData = this.generateSearchData.bind(this);
         this.dealData = this.dealData.bind(this);
         this.popUpImg = this.popUpImg.bind(this);
+        this.popUpYelp = this.popUpYelp.bind(this);
+
+        this.callback = {
+            img: this.popUpImg,
+            yelp: this.popUpYelp
+        }
+    }
+    popUpYelp(content){
+        const titleUrl = `${content.contentBox.title.url}`;
+        const iframe = $('<iframe>').attr('src', titleUrl).addClass('yelpframe');
+        const modal = new Modal(iframe);
     }
     popUpImg(content){
         const imageUrl = `url('${content.contentBox.imgBox.url}')`;
-        const picture = $('<div>').attr('id', 'picture');
+        const picture = $('<div>').addClass('picture');
         picture.css('background-image', imageUrl);
         const modal = new Modal(picture);
     }
@@ -48,7 +60,7 @@ class Food{
     dealData(response){
         const business = response.businesses;
         for(let i=0; i < business.length; i++){
-            const newContent = new FoodContent(business[i], this.popUpImg);
+            const newContent = new FoodContent(business[i], this.callback);
             this.render(newContent.makeNewContent(i));
         }   
     }
@@ -64,9 +76,10 @@ class Food{
         navigator.geolocation.getCurrentPosition(this.savePosition);
     }
     savePosition(pos){
+        debugger;
         const crd = pos.coords;
-        this.latitude = crd.latitude.toString();
-        this.longitude = crd.longitude.toString();
+        this.latitude = crd.latitude;
+        this.longitude = crd.longitude;
     }    
 }
 
