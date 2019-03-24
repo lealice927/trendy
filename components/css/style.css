@@ -8,7 +8,8 @@ body {
 }
 
 .navbar{
-    height: 5vh; 
+    margin-bottom: 6vh;
+    height: 8vh; 
     font-weight: normal;
     border: none;  
     background: #8acac9;  /* fallback for old browsers */
@@ -18,7 +19,7 @@ body {
 .rockimg{
     width:100%;
     display: inline-block;
-    padding-bottom: 1vmin;
+    padding: 1vmin 0;
     vertical-align: top;
 }
 
@@ -26,27 +27,14 @@ body {
     width:20%;
     padding: 0;
 }
-
 .navbar-right{
-    display: inline-block;
+    float: right;
 }
-
 .navbar-right div{
     color: rgb(40, 40, 88);
     display: inline-block;
-    font-size: 2vmin;
-    margin-top: 0.5vmin;
-    transition: 0.2s;
-}
-
-
-.navlink::before, .navlink::after{
-    content: ' | ';
-    transition: 0.2s;
-}
-
-.navlink:hover:before, .navlink:hover:after{
-    visibility: hidden;  
+    font-size: 3vmin;
+    margin: 1vmin;
 }
 
 .navlink:hover{
@@ -55,6 +43,7 @@ body {
     border-top: 1px solid rgb(40, 40, 88);
     transition: 0.2s;
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .main-body{
@@ -64,11 +53,11 @@ body {
 }
 
 .topics-title {
-    margin-top: 5rem;
+    margin-top: 8vh;
     padding: 0.5vmin;
     background-color: #173e43;
     width: 80%;
-    height: 10%;
+    height: 8%;
     text-align: center;
     font-size: 4vmin;
     color: #dddfd4;
@@ -137,7 +126,6 @@ body {
 
 a {
     color: #1f4a50;
-    font-size: 2vmin;
     text-decoration: none;
 }
 
@@ -148,12 +136,11 @@ a {
     font-size: 3vmin;
     padding: 3vmin 5vmin ;
     color: white;
+    overflow: hidden;
 }
 
 .modal {
 	position: fixed;
-	/* left: 0;
-	top: 0; */
 	height: 100vh;
 	width: 100vw;
 	background-color: rgb(255, 255, 255, 0.5);
@@ -303,7 +290,6 @@ a {
         height: 30%;
     }
     .text-box{
-        font-size: 2vmin;
         width: 70%;
     }
     .image-box{
@@ -319,7 +305,21 @@ a {
     .navlink::before, .navlink::after{
         visibility: hidden;  
     }
+
     .topics{
         height: 50%;
+    }
+    .rockimg{
+        width: 200%;
+    }
+    .title-box, .description-box{
+        font-size: 4vmin;
+    }
+    .title-box:hover, .title-box>a:hover{
+        font-size: 4.5vmin;
+    }
+    .modalBody{
+        width: 60vmin;
+        height: 60vmin;
     }
 }
