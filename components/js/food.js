@@ -6,7 +6,7 @@ class Food{
 
         this.getCurrentLocation = this.getCurrentLocation.bind(this);
         this.savePosition = this.savePosition.bind(this);
-        this.generateSearchData = this.generateSearchData.bind(this);
+        this.getDataFromServer = this.getDataFromServer.bind(this);
         this.dealData = this.dealData.bind(this);
         this.popUpImg = this.popUpImg.bind(this);
         this.popUpYelp = this.popUpYelp.bind(this);
@@ -27,7 +27,7 @@ class Food{
         picture.css('background-image', imageUrl);
         const modal = new Modal(picture);
     }
-    generateSearchData(){
+    getDataFromServer(){
         const ajaxObj = {
             "async": true,
             "crossDomain": true,
@@ -52,9 +52,9 @@ class Food{
         } else {
             ajaxObj.data.location = 'orange county';
         }
-        this.getDataFromServer(ajaxObj);
+        this.generateSearchData(ajaxObj);
     }
-    getDataFromServer(ajaxObj){
+    generateSearchData(ajaxObj){
         $.ajax(ajaxObj);
     }
     dealData(response){

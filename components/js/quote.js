@@ -26,7 +26,6 @@ class Quotes{
         let descriptionBox = $('<div>').addClass('description-box').append(messagePassedIn);     //creates container for message from URL to be held
         var newPicture = this.randomPicture();
         const txtBox = $('<div>').addClass('image-box').css("background-image", `url(${newPicture})`);  //creates container for message from URL to be held
-        debugger;
         const textBox = $('<div>').addClass('text-box')
         var numberCount = $('<div>').addClass('title-box').text(' # Quote');;
         numberCount.append(textBox);
