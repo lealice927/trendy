@@ -356,8 +356,8 @@ a {
     }
     .navbar-right div,
     .nav-menu {
-        /* border: 3px outset #8acac9;
-        border-radius: 8px; */
+        border: 2.5px outset #8acac9;
+        border-radius: 8px;
         margin: 0.5vmin;
     }
     .navbar-nav {
