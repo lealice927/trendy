@@ -12,7 +12,7 @@ class Movie {
                     const director = response.feed.results[index].artistName;
                     const name = response.feed.results[index].name;
                     const moviePreview = response.feed.results[index].url;
-                    const genre = response.feed.results[index].genre[index].name;
+                    const genre = response.feed.results[index].genres[0].name;
                     const newDiv = this.newElement(movieImage, movieName, director, name, moviePreview, genre);
                     this.render('#main-content', newDiv)
                 }
