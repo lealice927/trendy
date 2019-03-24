@@ -14,12 +14,7 @@ class Trendy{
         $('.video').on('click', this.linkClickCallBack);
     }
     linkClickCallBack(childClicked){
-        let boxClicked;
-        if(childClicked.newElement){
-            boxClicked = childClicked.newElement[0].innerText;
-        }else{
-            boxClicked = childClicked.target.textContent;
-        }
+        const boxClicked = childClicked.elementName === undefined ? childClicked.target.textContent : childClicked.elementName;
         this.emptyBody();
         this.emptyHomeBody();
         this.showNavBar();    
@@ -55,7 +50,9 @@ class Trendy{
     generateHomePage(){
         this.emptyHomeBody();
         this.hideNavBar();
-        const homepage = new LandingPage(this.linkClickCallBack);
+        const landing = new LandingPage(this.linkClickCallBack);
+        const homePage = landing.createDomElements();
+        landing.render('body', homePage);
     }
     generateNewPage(page, text){
         const newPage = new page();

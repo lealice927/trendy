@@ -28,7 +28,6 @@ class Food{
         const modal = new Modal(picture);
     }
     getDataFromServer(){
-        debugger;
         const ajaxObj = {
             "async": true,
             "crossDomain": true,
