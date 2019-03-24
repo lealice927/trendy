@@ -21,8 +21,8 @@ class Trendy{
             boxClicked = childClicked.target.textContent;
         }
         this.emptyBody();
-        this.showNavBar();    
         this.emptyHomeBody();
+        this.showNavBar();    
         switch(boxClicked){
             case 'Music':
                 this.generateNewPage(Music, 'Top Trendy Music');
@@ -42,6 +42,7 @@ class Trendy{
     }
     emptyHomeBody(){
         $('.main').remove();
+        $('.modal').remove();
     }
     showNavBar(){
         $('.navbar').show();

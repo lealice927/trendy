@@ -1,23 +1,34 @@
 class Music {
+    constructor(){
+        this.handleSuccess = this.handleSuccess.bind(this);
+        this.handleError = this.handleError.bind(this);
+    }
     getDataFromServer() {
         const ajaxObject = {
             dataType: "json",
             url: "components/php/itunes.php",
             method: "GET",
             success: (response) => {
-                for (let index = 0; index < 10; index++) {
-                const albumImage = response.feed.results[index].artworkUrl100;
-                const albumName = `# ${index+1} :  ${response.feed.results[index].collectionName}`;
-                const artist = response.feed.results[index].artistName;
-                const songName = response.feed.results[index].name;
-                const iTunesAlbum = response.feed.results[index].url;
-                const newDiv = this.newElement(albumImage, albumName, artist, songName, iTunesAlbum);
-                this.render('#main-content', newDiv)
-                }
+                this.handleSuccess(response);
             },
-            error: ()=>alert('Failed to contact server')
+            error: this.handleError
         } 
         $.ajax(ajaxObject);
+    }
+    handleSuccess(response){
+        for (let index = 0; index < 10; index++) {
+            const albumImage = response.feed.results[index].artworkUrl100;
+            const albumName = `# ${index+1} :  ${response.feed.results[index].collectionName}`;
+            const artist = response.feed.results[index].artistName;
+            const songName = response.feed.results[index].name;
+            const iTunesAlbum = response.feed.results[index].url;
+            const newDiv = this.newElement(albumImage, albumName, artist, songName, iTunesAlbum);
+            this.render('#main-content', newDiv)
+            }
+    }
+    handleError(){
+        const errorMessage = $('<p>').text('Failed to contact server').addClass('error-message modalContent');
+        const errorModal = new Modal(errorMessage);
     }
     newElement(image, album, artist, song, link) {
         const imageBox = $('<div>').addClass('image-box').css('background-image', `url(${image})`);
