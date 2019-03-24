@@ -1,5 +1,8 @@
 
 class Movie {
+    constructor(){
+        this.handleError = this.handleError.bind(this);
+    }
     getDataFromServer() {
         const ajaxObject = {
             dataType: "json",
@@ -17,9 +20,22 @@ class Movie {
                     this.render('#main-content', newDiv)
                 }
             },
-            error: () => alert('Failed to contact server')
+            error: this.handleError
         }
         $.ajax(ajaxObject);
+    }
+    handleError(){
+        const errorMessage = $('<p>').text('Failed to contact server').addClass('error-message modalContent');
+        const errorModal = new Modal(errorMessage);
+
+
+            // const errorimg = $('<img>').attr({
+            //     'src': 'components/css/images/serverdown.png',
+            //     'width' : '100%'
+            //     });
+            // const errorMessage = $('<div>').addClass('error-message');
+            // errorMessage.append(errorimg);
+            // const errorModal = new Modal(errorMessage);
     }
     newElement(image, movie, director, genre, link) {
         const imageBox = $('<div>').addClass('image-box').css('background-image', `url(${image})`);

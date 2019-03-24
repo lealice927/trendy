@@ -4,7 +4,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 0;
     background-image: url('images/1bk.png');
-    color: #15383d;
+    color: #1d1401;
 }
 
 .navbar{
@@ -12,9 +12,6 @@ body {
     height: 8vh; 
     font-weight: normal;
     border: none;  
-    background: #8acac9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #8acac9, #c0cd79);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #8acac9, #c0cd79); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
 }
 .rockimg{
     width:100%;
@@ -163,19 +160,22 @@ a {
 
 .error-message {
     font-size: 6vmin;
-    background-color: #66aaa9;
-    border: 3px dotted;
-    color: red;
+
+    border: 1px solid red; 
+    color: white;
     text-align: center;
+}
+
+.main, .error-message, .navbar{
+    background: #8acac9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8acac9, #c0cd79);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8acac9, #c0cd79); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
 }
 
 /* landing page*/
 .main{
     width: 100%;
     height: 100vh;
-    background: #8acac9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #8acac9, #c0cd79);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #8acac9, #c0cd79); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
 }
 
 .title{
@@ -236,7 +236,7 @@ a {
 .topics{
     height: 80%;
     width: 25%;
-    border-radius: 10px;
+    border-radius: 20px;
     margin:auto;
     display: inline-block;
     box-sizing: border-box;
