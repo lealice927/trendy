@@ -24,6 +24,12 @@ body {
     width:20%;
     padding: 0;
 }
+
+.nav-menu {
+    float: right;
+    visibility: hidden;
+}
+
 .navbar-right{
     float: right;
 }
@@ -34,7 +40,8 @@ body {
     margin: 1vmin;
 }
 
-.navlink:hover{
+.navlink:hover,
+.nav-menu:hover {
     background-color: rgb(255, 255, 255, 0.5);
     border-bottom: 1px solid rgb(40, 40, 88);
     border-top: 1px solid rgb(40, 40, 88);
@@ -340,12 +347,25 @@ a {
         left: 5%;
     }
 }
-
 @media (max-width: 786px){
     .navlink::before, .navlink::after{
         visibility: hidden;  
     }
-
+    .navbar-right div,
+    .nav-menu {
+        border: 3px outset #8acac9;
+        border-radius: 8px;
+        margin: 0.5vmin;
+    }
+    .navbar-nav {
+        display: none;
+    }
+    .nav-menu {
+        visibility: visible;
+        font-size: 3vmin;
+        padding: 0.5vmin;
+        margin: 2vmin 0 0 3vmin;
+    }
     .topics{
         height: 50%;
     }
@@ -354,12 +374,27 @@ a {
     }
     .title-box, .description-box{
         font-size: 4vmin;
+        padding: 4vmin;
     }
-    .title-box:hover, .title-box>a:hover{
+    .title-box:hover, 
+    .title-box>a:hover{
         font-size: 4.5vmin;
     }
     .modalBody{
         width: 60vmin;
         height: 60vmin;
+    }
+    .image-box,
+    .text-box {
+        width: 50%;
+    }
+    .title-box {
+        height: 100%;
+    }
+    .description-box {
+        height: 0;
+        width: 0;
+        font-size: 0;
+        padding: 0;
     }
 }
