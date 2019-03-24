@@ -53,5 +53,12 @@ class Movie {
     render(divContainer, newElement) {
         $(divContainer).append(newElement);
     }
+    addMoreResults(){
+        // this.getDataFromServer(this.pageToken);
+    }
+    addMoreResultsButton(){
+        const addButton = $('<button>').addClass('add-button').text('Next 10').on('click', this.addMoreResults);
+        this.render('#main-content', addButton);
+    }    
 }
 

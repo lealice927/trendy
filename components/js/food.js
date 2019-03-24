@@ -84,6 +84,13 @@ class Food{
         const crd = pos.coords;
         this.latitude = crd.latitude;
         this.longitude = crd.longitude;
+    }
+    addMoreResults(){
+        // this.getDataFromServer(this.pageToken);
+    }
+    addMoreResultsButton(){
+        const addButton = $('<button>').addClass('add-button').text('Next 10').on('click', this.addMoreResults);
+        this.render(addButton);
     }    
 }
 

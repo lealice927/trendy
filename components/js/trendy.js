@@ -59,6 +59,7 @@ class Trendy{
     generateNewPage(page, text){
         const newPage = new page();
         newPage.getDataFromServer();
+        newPage.addMoreResultsButton();
         this.topicText.text(text);
     }
 }
