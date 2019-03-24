@@ -76,7 +76,6 @@ class Food{
         navigator.geolocation.getCurrentPosition(this.savePosition);
     }
     savePosition(pos){
-        debugger;
         const crd = pos.coords;
         this.latitude = crd.latitude;
         this.longitude = crd.longitude;
