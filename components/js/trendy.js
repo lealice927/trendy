@@ -3,6 +3,7 @@ class Trendy{
         this.topicText = $('.topics-title');
         this.navbar = $('.navbar');
         this.mainBody = $('.main-body');
+        this.navList = $('.nav');
         this.addEventListener = this.addEventListener.bind(this);
         this.linkClickCallBack = this.linkClickCallBack.bind(this);
         this.generateHomePage = this.generateHomePage.bind(this);
@@ -52,11 +53,12 @@ class Trendy{
         this.mainBody.hide();
     }
     menuClicked(){
-        $('.nav').toggle();
+        this.navList.toggle();
     }
     generateHomePage(){
         this.emptyHomeBody();
         this.hideNavBar();
+        this.navList.hide();
         const landing = new LandingPage(this.linkClickCallBack);
         const homePage = landing.createDomElements();
         landing.render('body', homePage);
