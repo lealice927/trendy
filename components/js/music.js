@@ -1,4 +1,3 @@
-
 class Music {
     getDataFromServer() {
         const ajaxObject = {
