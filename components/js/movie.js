@@ -1,6 +1,7 @@
 
 class Movie {
     constructor(){
+        this.handleSuccess = this.handleSuccess.bind(this);
         this.handleError = this.handleError.bind(this);
     }
     getDataFromServer() {
@@ -9,20 +10,23 @@ class Movie {
             url: "components/php/movies.php",
             method: "GET",
             success: (response) => {
-                for (let index = 0; index < 10; index++) {
-                    const movieImage = response.feed.results[index].artworkUrl100;
-                    const movieName = `# ${index + 1} :  ${response.feed.results[index].name}`;
-                    const director = response.feed.results[index].artistName;
-                    const name = response.feed.results[index].name;
-                    const moviePreview = response.feed.results[index].url;
-                    const genre = response.feed.results[index].genres[0].name;
-                    const newDiv = this.newElement(movieImage, movieName, director, name, moviePreview, genre);
-                    this.render('#main-content', newDiv)
-                }
+                this.handleSuccess(response);
             },
             error: this.handleError
         }
         $.ajax(ajaxObject);
+    }
+    handleSuccess(){
+        for (let index = 0; index < 10; index++) {
+            const movieImage = response.feed.results[index].artworkUrl100;
+            const movieName = `# ${index + 1} :  ${response.feed.results[index].name}`;
+            const director = response.feed.results[index].artistName;
+            const name = response.feed.results[index].name;
+            const moviePreview = response.feed.results[index].url;
+            const genre = response.feed.results[index].genres[0].name;
+            const newDiv = this.newElement(movieImage, movieName, director, name, moviePreview, genre);
+            this.render('#main-content', newDiv)
+        }
     }
     handleError(){
         const errorimg = $('<img>').attr({

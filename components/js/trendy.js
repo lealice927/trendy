@@ -1,6 +1,8 @@
 class Trendy{
     constructor(){
         this.topicText = $('.topics-title');
+        this.navbar = $('.navbar');
+        this.mainBody = $('.main-body');
         this.addEventListener = this.addEventListener.bind(this);
         this.linkClickCallBack = this.linkClickCallBack.bind(this);
         this.generateHomePage = this.generateHomePage.bind(this);
@@ -40,12 +42,12 @@ class Trendy{
         $('.modal').remove();
     }
     showNavBar(){
-        $('.navbar').show();
-        $('.main-body').show();
+        this.navbar.show();
+        this.mainBody.show();
     }
     hideNavBar(){
-        $('.navbar').hide();
-        $('.main-body').hide();
+        this.navbar.hide();
+        this.mainBody.hide();
     }
     generateHomePage(){
         this.emptyHomeBody();
