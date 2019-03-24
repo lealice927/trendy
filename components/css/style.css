@@ -273,7 +273,7 @@ a {
 
 .topic-icon{
     text-align: center;
-    font-size: 18vmin;
+    font-size: 16vmin;
 }
 
 .picture{
@@ -299,7 +299,7 @@ a {
     font-size: 3vmin;
     color: rgba(0, 0, 0, 0.7);
     background: #c0cd79;
-    border: 1vmin solid #8acac9;
+    border: 1px solid #8acac9;
     z-index: 1;
 }
 
@@ -345,6 +345,9 @@ a {
         width: 40%;
         left: 5%;
     }
+    .navbar-nav {
+        display: block;
+    }
 }
 @media (max-width: 786px){
     .navlink::before, .navlink::after{
@@ -352,8 +355,8 @@ a {
     }
     .navbar-right div,
     .nav-menu {
-        border: 3px outset #8acac9;
-        border-radius: 8px;
+        /* border: 3px outset #8acac9;
+        border-radius: 8px; */
         margin: 0.5vmin;
     }
     .navbar-nav {
