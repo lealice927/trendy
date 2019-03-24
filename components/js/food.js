@@ -73,7 +73,6 @@ class Food{
         }   
     }
     render(content){
-        debugger;
         this.mainContent.append(content);
     }
     handleError(){
