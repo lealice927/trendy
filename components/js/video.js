@@ -3,8 +3,11 @@ class Video{
     constructor(){
         this.handleSuccess = this.handleSuccess.bind(this);
         this.handleError = this.handleError.bind(this);
+        this.addMoreResults = this.addMoreResults.bind(this);
+        this.pageToken = null;
+        this.index = 0;
     }
-    getDataFromServer(){
+    getDataFromServer(pageToken){
         const ajaxObject = {
             dataType: 'json',
             url: 'https://www.googleapis.com/youtube/v3/videos',
@@ -14,7 +17,8 @@ class Video{
                 maxResults: 10,
                 chart: 'mostPopular',
                 regionCode: 'US',
-                key: 'AIzaSyDlkgVNYAnyQj3e4gZipF7DwyYBFjLtSZU'
+                key: 'AIzaSyDlkgVNYAnyQj3e4gZipF7DwyYBFjLtSZU',
+                pageToken: pageToken
             },
             success: (response)=>{
                 this.handleSuccess(response);
@@ -24,12 +28,13 @@ class Video{
         $.ajax(ajaxObject);
     }
     handleSuccess(response){
-        for(let index = 0; index < response.items.length; index++){
-            let {title, description} = response.items[index].snippet;
-            const numAndTitle = title.length > 40 ? `# ${index + 1} : ${title.substr(0, 40)}...` : `# ${index + 1} : ${title}`;
-            const minDescription = description.length > 150 ? `# ${index + 1} : ${description.substr(0, 150)}...` : `# ${index + 1} : ${description}`;
-            const {standard, high} = response.items[index].snippet.thumbnails;
-            const link = response.items[index].id;
+        this.pageToken = response.nextPageToken;
+        for(let itemIndex = 0; itemIndex < response.items.length; this.index++, itemIndex++){
+            let {title, description} = response.items[itemIndex].snippet;
+            const numAndTitle = title.length > 40 ? `# ${this.index + 1} : ${title.substr(0, 40)}...` : `# ${this.index + 1} : ${title}`;
+            const minDescription = description.length > 150 ? `# ${this.index + 1} : ${description.substr(0, 150)}...` : `# ${this.index + 1} : ${description}`;
+            const {standard, high} = response.items[itemIndex].snippet.thumbnails;
+            const link = response.items[itemIndex].id;
             const videoImage = standard === undefined ? high : standard;
             const newDiv = this.newElement(videoImage.url, numAndTitle, minDescription, link);
             this.render('#main-content', newDiv);
@@ -64,5 +69,12 @@ class Video{
     }
     render(divContainer, newElement){
         $(divContainer).append(newElement);
+    }
+    addMoreResults(){
+        this.getDataFromServer(this.pageToken);
+    }
+    addMoreResultsButton(){
+        const addButton = $('<button>').addClass('add-button').text('Next 10').on('click', this.addMoreResults);
+        this.render('#main-content', addButton);
     }
 }
