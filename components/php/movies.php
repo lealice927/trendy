@@ -1,6 +1,6 @@
 <?php
 //questions?  Ask Dan Paschal daniel.paschal@learningfuze.com
-$proxyURL = "https://rss.itunes.apple.com/api/v1/us/movies/top-movies/all/10/explicit.json";
+$proxyURL = "https://rss.itunes.apple.com/api/v1/us/movies/top-movies/all/25/explicit.json";
 //$proxyURL = "https://api.fortnitetracker.com/v1/profile/{$_GET['platform']}/{$_GET['player']}";
 $acceptableHeaders = ['TRN-Api-Key'];
 
