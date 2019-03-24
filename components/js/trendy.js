@@ -58,7 +58,9 @@ class Trendy{
     generateHomePage(){
         this.emptyHomeBody();
         this.hideNavBar();
-        this.navList.hide();
+        if ($(window).width() < 786) {
+            this.navList.hide();
+        }
         const landing = new LandingPage(this.linkClickCallBack);
         const homePage = landing.createDomElements();
         landing.render('body', homePage);
