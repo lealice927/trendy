@@ -3,10 +3,12 @@ class Trendy{
         this.topicText = $('.topics-title');
         this.navbar = $('.navbar');
         this.mainBody = $('.main-body');
+        this.navList = $('.nav');
         this.addEventListener = this.addEventListener.bind(this);
         this.linkClickCallBack = this.linkClickCallBack.bind(this);
         this.generateHomePage = this.generateHomePage.bind(this);
         this.generateNewPage = this.generateNewPage.bind(this);
+        this.menuClicked = this.menuClicked.bind(this);
     }
     addEventListener(){
         $('.landing').on('click', this.generateHomePage);
@@ -14,6 +16,7 @@ class Trendy{
         $('.movie').on('click', this.linkClickCallBack);
         $('.music').on('click', this.linkClickCallBack);
         $('.video').on('click', this.linkClickCallBack);
+        $('.nav-menu').on('click', this.menuClicked);
     }
     linkClickCallBack(childClicked){
         const boxClicked = childClicked.elementName === undefined ? childClicked.target.textContent : childClicked.elementName;
@@ -49,9 +52,15 @@ class Trendy{
         this.navbar.hide();
         this.mainBody.hide();
     }
+    menuClicked(){
+        this.navList.toggle();
+    }
     generateHomePage(){
         this.emptyHomeBody();
         this.hideNavBar();
+        if ($(window).width() < 786) {
+            this.navList.hide();
+        }
         const landing = new LandingPage(this.linkClickCallBack);
         const homePage = landing.createDomElements();
         landing.render('body', homePage);
@@ -59,6 +68,7 @@ class Trendy{
     generateNewPage(page, text){
         const newPage = new page();
         newPage.getDataFromServer();
+        newPage.addMoreResultsButton();
         this.topicText.text(text);
     }
 }
