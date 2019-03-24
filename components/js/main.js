@@ -1,9 +1,5 @@
-$(document).ready(startApp);
-
-let trendy;
-
-function startApp(){
+$(document).ready(()=>{
     trendy = new Trendy();
     trendy.addEventListener();
     trendy.generateHomePage();
-}
+});

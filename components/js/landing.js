@@ -2,8 +2,6 @@
 class LandingPage {
     constructor(clickCallBack){
         this.elementClick = clickCallBack;
-        this.newLanding = this.createDomElements();
-        this.render('body', this.newLanding);
     }
     createDomElements(){
         const titleText = $('<div>').addClass('title-text');
@@ -13,19 +11,20 @@ class LandingPage {
         const titleBackground = $('<div>').addClass('title-background').append(titleText, subtitleText);
         const title = $('<div>').addClass('title').append(titleBackground);
 
-        const foodTopics = new LandingElement('fas fa-ice-cream', 'Food', this.elementClick);
-        const musicTopics = new LandingElement('fas fa-music', 'Music', this.elementClick);
-        const foodMusicRow = $('<div>').addClass('topic-row').append(foodTopics.newElement, musicTopics.newElement);
-
-        const movieTopics = new LandingElement('fas fa-film', 'Movie', this.elementClick);
-        const videoTopics = new LandingElement('fab fa-youtube', 'Video', this.elementClick);
-        const movieVideoRow = $('<div>').addClass('topic-row').append(movieTopics.newElement, videoTopics.newElement);
+        const food = new LandingElement('Food', this.elementClick);
+        const foodTopics = food.createDomElements('fas fa-ice-cream', 'Food');
+        const music = new LandingElement('Music', this.elementClick);
+        const musicTopics = music.createDomElements('fas fa-music', 'Music');
+        const foodMusicRow = $('<div>').addClass('topic-row').append(foodTopics, musicTopics);
+        const movie = new LandingElement('Movie', this.elementClick);
+        const movieTopics = movie.createDomElements('fas fa-film', 'Movie');
+        const video = new LandingElement('Video', this.elementClick);
+        const videoTopics = video.createDomElements('fab fa-youtube', 'Video');
+        const movieVideoRow = $('<div>').addClass('topic-row').append(movieTopics, videoTopics);
         
         const topicBox = $('<div>').addClass('topic-box').append(foodMusicRow, movieVideoRow);
         const topicArea = $('<div>').addClass('topic-area').append(topicBox);
-
-        const main = $('<div>').addClass('main').append(title, topicArea);
-        
+        const main = $('<div>').addClass('main').append(title, topicArea);        
         return main;
     }
     render(divContainer, newElement) {

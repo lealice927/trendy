@@ -26,11 +26,8 @@ class Video{
     handleSuccess(response){
         for(let index = 0; index < response.items.length; index++){
             let {title, description} = response.items[index].snippet;
-            let numAndTitle = `# ${index + 1} : ${title}`;
-            if(title.length > 40){
-                numAndTitle = `# ${index + 1} : ${title.substr(0, 40)}...`;
-            }
-            const minDescription = `${description.substr(0, 150)}...`;
+            const numAndTitle = title.length > 40 ? `# ${index + 1} : ${title.substr(0, 40)}...` : `# ${index + 1} : ${title}`;
+            const minDescription = description.length > 150 ? `# ${index + 1} : ${description.substr(0, 150)}...` : `# ${index + 1} : ${description}`;
             const {standard, high} = response.items[index].snippet.thumbnails;
             const link = response.items[index].id;
             const videoImage = standard === undefined ? high : standard;
