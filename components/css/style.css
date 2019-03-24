@@ -1,35 +1,49 @@
 body {
     margin: 0;
     position: relative;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Roboto', sans-serif;
     font-size: 0;
-    background: #8acac9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #8acac9, #c0cd79);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #8acac9, #c0cd79); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: url('images/1bk.png');
+    color: #15383d;
 }
 
 .navbar{
-    height: 5vh;
-    background-color:#c0cd79;    
+    margin-bottom: 6vh;
+    height: 8vh; 
     font-weight: normal;
-    font-size: 2vh;
-    border: none;
+    border: none;  
+    background: #8acac9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8acac9, #c0cd79);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8acac9, #c0cd79); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+}
+.rockimg{
+    width:100%;
+    display: inline-block;
+    padding: 1vmin 0;
+    vertical-align: top;
 }
 
+.navbar-brand{
+    width:20%;
+    padding: 0;
+}
+.navbar-right{
+    float: right;
+}
 .navbar-right div{
     color: rgb(40, 40, 88);
     display: inline-block;
     font-size: 3vmin;
-    padding-top: 1vmin;
+    margin: 1vmin;
 }
 
-.navbar-right div:hover{
-    color: rgb(132, 132, 192);
-}
-
-.navbar-default .navbar-brand{
-    font-size: 4vmin;
-    color: rgb(40, 40, 88);
+.navlink:hover{
+    background-color: rgb(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgb(40, 40, 88);
+    border-top: 1px solid rgb(40, 40, 88);
+    transition: 0.2s;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 .main-body{
@@ -39,13 +53,13 @@ body {
 }
 
 .topics-title {
-    margin-top: 5rem;
+    margin-top: 8vh;
     padding: 0.5vmin;
     background-color: #173e43;
     width: 80%;
-    height: 10%;
+    height: 8%;
     text-align: center;
-    font-size: 5vmin;
+    font-size: 4vmin;
     color: #dddfd4;
     position: relative;
     left: 10%;
@@ -66,6 +80,9 @@ body {
     background-color: #8acac9;
     height: 40%;
     position: relative;
+    box-shadow: 0px 0px 2px 0px rgb(45, 115, 124, 0.75);
+    border:0px 1px 0px 1px solid #173e43;
+    box-sizing: border-box;
 }
 
 .image-box {
@@ -77,9 +94,8 @@ body {
     display: inline-block;
 }
 
-img {
-    width: 100%;
-    height: auto;
+.imghover:hover{
+    cursor: zoom-in;
 }
 
 .text-box {
@@ -96,22 +112,20 @@ img {
     background-color: #66aaa9;
     padding-top: 2%;
     padding-left: 5%;
+    color: #1f4a50;
+    text-decoration: none;
 }
 
-a, .title-box, .title-box p {
-    color: rgb(40, 40, 88);
-    text-decoration: none;
-    font-size: 3.5vmin;
-}
-
-a:hover{
-    color: rgb(160, 100, 160);
-    text-decoration: none;
+.title-box:hover, .title-box>a:hover {
     cursor: pointer;
+    font-size: 3.6vmin;
+    color: #173e43;
+    background-color: #6fb1b0;
+    text-decoration: none;
 }
 
-a:visited{
-    color: rgb(40, 40, 88);
+a {
+    color: #1f4a50;
     text-decoration: none;
 }
 
@@ -122,12 +136,11 @@ a:visited{
     font-size: 3vmin;
     padding: 3vmin 5vmin ;
     color: white;
+    overflow: hidden;
 }
 
 .modal {
 	position: fixed;
-	left: 0;
-	top: 0;
 	height: 100vh;
 	width: 100vw;
 	background-color: rgb(255, 255, 255, 0.5);
@@ -152,6 +165,9 @@ a:visited{
 .main{
     width: 100%;
     height: 100vh;
+    background: #8acac9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8acac9, #c0cd79);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8acac9, #c0cd79); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
 }
 
 .title{
@@ -159,6 +175,12 @@ a:visited{
     width: 100%;
     position: relative;
     box-sizing: border-box;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.titleimg{
+    width: 60%;
+    margin: 2vmin 0;
 }
 
 .title-background{
@@ -172,6 +194,7 @@ a:visited{
     height: 60%;
     width: 50%;
     font-size: 10vmin;
+
 }
 
 .subtitle-text{
@@ -180,6 +203,7 @@ a:visited{
     height: 30%;
     width: 80%;
     font-size: 3vmin;
+    padding-top: 5vmin;
 }
 
 .topic-area{
@@ -204,8 +228,7 @@ a:visited{
 .topics{
     height: 80%;
     width: 25%;
-    /* border: 2px solid white; */
-    border-radius: 50px;
+    border-radius: 10px;
     margin:auto;
     display: inline-block;
     box-sizing: border-box;
@@ -216,11 +239,14 @@ a:visited{
     box-shadow: 0px 0px 50px -22px rgba(0,0,0,0.75);
     background-image: url('images/1bk.png');
     background-size: cover;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    border: 1px solid white;
 }
 
 .topics:hover{
     background-image: url('images/2bk.png');
     background-size: cover;   
+    cursor: pointer;
 }
 
 .topics:hover .topic-icon{
@@ -229,21 +255,27 @@ a:visited{
 
 .topic-text{
     text-align: center;
-    font-size: 3vh;
-    color: rgb(2, 2, 2);
+    font-size: 3vmin;
 }
 
 .topic-icon{
     text-align: center;
     font-size: 18vmin;
-    color: rgb(22, 21, 21);
 }
 
-#picture{
+.picture{
     width: 100%;
     height: 100%;
     background-size: 100%;
     background-repeat: no-repeat;
+}
+
+.yelpframe{
+    width: 180%;
+    height: 100%;
+    position: relative;
+    right: 30%;
+
 }
 
 @media (max-width: 1240px){
@@ -251,5 +283,43 @@ a:visited{
         width:100%;
         left:0;
     }
+    .topics-title{
+        padding-top: 2vmin;
+    }
+    .content-box{
+        height: 30%;
+    }
+    .text-box{
+        width: 70%;
+    }
+    .image-box{
+        width: 30%;
+    }
+    .topics{
+        width: 40%;
+        left: 5%;
+    }
+}
 
+@media (max-width: 786px){
+    .navlink::before, .navlink::after{
+        visibility: hidden;  
+    }
+
+    .topics{
+        height: 50%;
+    }
+    .rockimg{
+        width: 200%;
+    }
+    .title-box, .description-box{
+        font-size: 4vmin;
+    }
+    .title-box:hover, .title-box>a:hover{
+        font-size: 4.5vmin;
+    }
+    .modalBody{
+        width: 60vmin;
+        height: 60vmin;
+    }
 }

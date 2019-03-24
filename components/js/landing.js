@@ -6,8 +6,11 @@ class LandingPage {
         this.render('body', this.newLanding);
     }
     createDomElements(){
-        const titleText = $('<div>').addClass('title-text').text('Trendy');
-        const subtitleText = $('<div>').addClass('subtitle-text').text('Your best way to explore the most updated info...');
+        const titleText = $('<div>').addClass('title-text');//.text('Trendy');
+        const titleimg =$('<img>').addClass('titleimg').attr('src', 'components/css/images/rock.png');
+        debugger;
+        titleText.append(titleimg);
+        const subtitleText = $('<div>').addClass('subtitle-text').text('Click and bumb up the top topics!');
         const titleBackground = $('<div>').addClass('title-background').append(titleText, subtitleText);
         const title = $('<div>').addClass('title').append(titleBackground);
 
@@ -23,7 +26,7 @@ class LandingPage {
         const topicArea = $('<div>').addClass('topic-area').append(topicBox);
 
         const main = $('<div>').addClass('main').append(title, topicArea);
-
+        
         return main;
     }
     render(divContainer, newElement) {
