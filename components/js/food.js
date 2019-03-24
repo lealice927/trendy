@@ -94,7 +94,7 @@ class Food{
         this.longitude = crd.longitude;
     }
     addMoreResults(){
-        debugger;
+        $('add-button').remove();
         for( let index=0; index < this.nextTen.length; index++){
             this.render(this.nextTen[index]);
         }
