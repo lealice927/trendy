@@ -148,6 +148,14 @@ a:visited{
     margin: auto;
 }
 
+.error-message {
+    font-size: 6vmin;
+    background-color: #66aaa9;
+    border: 3px dotted;
+    color: red;
+    text-align: center;
+}
+
 /* landing page*/
 .main{
     width: 100%;

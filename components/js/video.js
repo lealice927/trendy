@@ -1,5 +1,8 @@
 
 class Video{
+    constructor(){
+        this.handleSuccess = this.handleSuccess.bind(this);
+    }
     getDataFromServer(){
         const ajaxObject = {
             dataType: 'json',
@@ -13,23 +16,30 @@ class Video{
                 key: 'AIzaSyDlkgVNYAnyQj3e4gZipF7DwyYBFjLtSZU'
             },
             success: (response)=>{
-                for(let index = 0; index < response.items.length; index++){
-                    let {title, description} = response.items[index].snippet;
-                    let numAndTitle = `# ${index + 1} : ${title}`;
-                    if(title.length > 40){
-                        numAndTitle = `# ${index + 1} : ${title.substr(0, 40)}...`;
-                    }
-                    const minDescription = `${description.substr(0, 150)}...`;
-                    const {standard, high} = response.items[index].snippet.thumbnails;
-                    const link = response.items[index].id;
-                    const videoImage = standard === undefined ? high : standard;
-                    const newDiv = this.newElement(videoImage.url, numAndTitle, minDescription, link);
-                    this.render('#main-content', newDiv);
-                }
+                this.handleSuccess(response);
             },
             error: ()=>alert('Failed to contact server')
         }
         $.ajax(ajaxObject);
+    }
+    handleSuccess(response){
+        for(let index = 0; index < response.items.length; index++){
+            let {title, description} = response.items[index].snippet;
+            let numAndTitle = `# ${index + 1} : ${title}`;
+            if(title.length > 40){
+                numAndTitle = `# ${index + 1} : ${title.substr(0, 40)}...`;
+            }
+            const minDescription = `${description.substr(0, 150)}...`;
+            const {standard, high} = response.items[index].snippet.thumbnails;
+            const link = response.items[index].id;
+            const videoImage = standard === undefined ? high : standard;
+            const newDiv = this.newElement(videoImage.url, numAndTitle, minDescription, link);
+            this.render('#main-content', newDiv);
+        }
+    }
+    handleError(){
+        const errorMessage = $('<p>').text('Failed to contact server').addClass('error-message modalContent');
+        const errorModal = new Modal(errorMessage);
     }
     newElement(image, title, description, link){
         const imageBox = $('<div>').addClass('image-box').css('background-image', `url(${image})`);
@@ -47,7 +57,7 @@ class Video{
             frameborder: 0,
             allowfullscreen: 'allowfullscreen'
         });
-        const modal = new Modal(modalVideo);
+        const videoModal = new Modal(modalVideo);
     }
     render(divContainer, newElement){
         $(divContainer).append(newElement);
