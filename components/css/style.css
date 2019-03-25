@@ -346,10 +346,14 @@ a {
         width: 40%;
         left: 5%;
     }
+}
+
+@media (min-width: 787px){
     .navbar-nav {
-        display: block;
+        display: block !important;
     }
 }
+
 @media (max-width: 786px){
     .navlink::before, .navlink::after{
         visibility: hidden;  
@@ -369,7 +373,6 @@ a {
         padding: 0.5vmin;
         margin: 2vmin 0 0 3vmin;
     }
-
     .topics{
         height: 50%;
     }
