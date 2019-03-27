@@ -1,7 +1,10 @@
 class Music {
-    constructor(){
+    constructor() {
         this.handleSuccess = this.handleSuccess.bind(this);
         this.handleError = this.handleError.bind(this);
+        this.addMoreResults = this.addMoreResults.bind(this);
+        this.musicIndex = 0;
+        this.index = 10;
     }
     getDataFromServer() {
         const ajaxObject = {
@@ -12,25 +15,28 @@ class Music {
                 this.handleSuccess(response);
             },
             error: this.handleError
-        } 
+        }
         $.ajax(ajaxObject);
     }
-    handleSuccess(response){
-        for (let index = 0; index < 25; index++) {
+    handleSuccess(response) {
+        debugger;
+        for (let index = 0; index < this.index; index++) {
             const albumImage = response.feed.results[index].artworkUrl100;
-            const albumName = `# ${index+1} :  ${response.feed.results[index].collectionName}`;
+            const albumName = `# ${index + 1} :  ${response.feed.results[index].collectionName}`;
             const artist = response.feed.results[index].artistName;
             const songName = response.feed.results[index].name;
             const iTunesAlbum = response.feed.results[index].url;
             const newDiv = this.newElement(albumImage, albumName, artist, songName, iTunesAlbum);
             this.render('#main-content', newDiv)
-            }
+        }
+        this.index += 10
     }
-    handleError(){
+
+    handleError() {
         const errorimg = $('<img>').attr({
             'src': 'components/css/images/serverdown.png',
-            'width' : '100%'
-            });
+            'width': '100%'
+        });
         const errorMessage = $('<div>').addClass('error-message');
         errorMessage.append(errorimg);
         const errorModal = new Modal(errorMessage);
@@ -51,12 +57,15 @@ class Music {
     render(divContainer, newElement) {
         $(divContainer).append(newElement);
     }
-    addMoreResults(){
-        // this.getDataFromServer(this.pageToken);
+    addMoreResults() {
+        $('#main-content').empty();
+        this.getDataFromServer();
+        this.addMoreResultsButton();
     }
-    addMoreResultsButton(){
+
+    addMoreResultsButton() {
         const addButton = $('<button>').addClass('add-button').text('Next 10').on('click', this.addMoreResults);
         this.render('#main-content', addButton);
-    }    
+    }
 }
 

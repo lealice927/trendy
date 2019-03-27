@@ -1,8 +1,11 @@
 
 class Movie {
-    constructor(){
+    constructor() {
         this.handleSuccess = this.handleSuccess.bind(this);
         this.handleError = this.handleError.bind(this);
+        this.addMoreResults = this.addMoreResults.bind(this);
+        this.movieIndex = 0;
+        this.index = 10;
     }
     getDataFromServer() {
         const ajaxObject = {
@@ -16,8 +19,8 @@ class Movie {
         }
         $.ajax(ajaxObject);
     }
-    handleSuccess(){
-        for (let index = 0; index < 25; index++) {
+    handleSuccess(response) {
+        for (let index = 0; index < this.index; index++) {
             const movieImage = response.feed.results[index].artworkUrl100;
             const movieName = `# ${index + 1} :  ${response.feed.results[index].name}`;
             const director = response.feed.results[index].artistName;
@@ -27,12 +30,14 @@ class Movie {
             const newDiv = this.newElement(movieImage, movieName, director, name, moviePreview, genre);
             this.render('#main-content', newDiv)
         }
+        this.index += 10
     }
-    handleError(){
+
+    handleError() {
         const errorimg = $('<img>').attr({
             'src': 'components/css/images/serverdown.png',
-            'width' : '100%'
-            });
+            'width': '100%'
+        });
         const errorMessage = $('<div>').addClass('error-message');
         errorMessage.append(errorimg);
         const errorModal = new Modal(errorMessage);
@@ -53,12 +58,15 @@ class Movie {
     render(divContainer, newElement) {
         $(divContainer).append(newElement);
     }
-    addMoreResults(){
-        // this.getDataFromServer(this.pageToken);
+    addMoreResults() {
+        $('#main-content').empty();
+        this.getDataFromServer();
+        this.addMoreResultsButton();
+
     }
-    addMoreResultsButton(){
+
+    addMoreResultsButton() {
         const addButton = $('<button>').addClass('add-button').text('Next 10').on('click', this.addMoreResults);
         this.render('#main-content', addButton);
-    }    
+    }
 }
-
