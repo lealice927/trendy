@@ -99,7 +99,7 @@ class Food{
         }
     }
     addMoreResultsButton(){
-        const addButton = $('<button>').addClass('add-button').text('More').on('click', this.addMoreResults);
+        const addButton = $('<button>').addClass('add-button').text('Show More').on('click', this.addMoreResults);
         this.render(addButton);
     }    
 }

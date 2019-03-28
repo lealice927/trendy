@@ -66,7 +66,7 @@ class Movie {
     }
 
     addMoreResultsButton() {
-        const addButton = $('<button>').addClass('add-button').text('Next 10').on('click', this.addMoreResults);
+        const addButton = $('<button>').addClass('add-button').text('Show More').on('click', this.addMoreResults);
         this.render('#main-content', addButton);
     }
 }
