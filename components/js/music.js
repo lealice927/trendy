@@ -19,7 +19,6 @@ class Music {
         $.ajax(ajaxObject);
     }
     handleSuccess(response) {
-        debugger;
         for (let index = 0; index < this.index; index++) {
             const albumImage = response.feed.results[index].artworkUrl100;
             const albumName = `# ${index + 1} :  ${response.feed.results[index].collectionName}`;
@@ -64,7 +63,7 @@ class Music {
     }
 
     addMoreResultsButton() {
-        const addButton = $('<button>').addClass('add-button').text('Next 10').on('click', this.addMoreResults);
+        const addButton = $('<button>').addClass('add-button').text('Show More').on('click', this.addMoreResults);
         this.render('#main-content', addButton);
     }
 }
