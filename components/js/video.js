@@ -6,6 +6,10 @@ class Video{
         this.addMoreResults = this.addMoreResults.bind(this);
         this.pageToken = null;
         this.index = 0;
+
+        const loader = $('<div>').addClass('loader');
+        const pageLoader = $('<div>').addClass('page-loader').append(loader);
+        $('#main-content').append(pageLoader);
     }
     getDataFromServer(pageToken){
         const ajaxObject = {
@@ -25,9 +29,11 @@ class Video{
             },
             error: this.handleError
         }
+        $('.page-loader').show();
         $.ajax(ajaxObject);
     }
     handleSuccess(response){
+        $('.page-loader').hide();
         this.pageToken = response.nextPageToken;
         for(let itemIndex = 0; itemIndex < response.items.length; this.index++, itemIndex++){
             let {title, description} = response.items[itemIndex].snippet;
@@ -41,13 +47,15 @@ class Video{
         }
     }
     handleError(){
+        $('.page-loader').hide();
         const errorimg = $('<img>').attr({
             'src': 'components/css/images/serverdown.png',
             'width' : '100%'
             });
         const errorMessage = $('<div>').addClass('error-message');
         errorMessage.append(errorimg);
-        const errorModal = new Modal(errorMessage);
+        const errorContainer = $('<div>').addClass('error-container').append(errorMessage);
+        this.render('#main-content', errorContainer);
     }
     newElement(image, title, description, link){
         const imageBox = $('<div>').addClass('image-box').css('background-image', `url(${image})`);

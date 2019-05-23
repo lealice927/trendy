@@ -5,6 +5,10 @@ class Music {
         this.addMoreResults = this.addMoreResults.bind(this);
         this.musicIndex = 0;
         this.index = 10;
+
+        const loader = $('<div>').addClass('loader');
+        const pageLoader = $('<div>').addClass('page-loader').append(loader);
+        $('#main-content').append(pageLoader);
     }
     getDataFromServer() {
         const ajaxObject = {
@@ -16,9 +20,11 @@ class Music {
             },
             error: this.handleError
         }
+        $('.page-loader').show();
         $.ajax(ajaxObject);
     }
     handleSuccess(response) {
+        $('.page-loader').hide();
         for (let index = 0; index < this.index; index++) {
             const albumImage = response.feed.results[index].artworkUrl100;
             const albumName = `# ${index + 1} :  ${response.feed.results[index].collectionName}`;
@@ -32,13 +38,15 @@ class Music {
     }
 
     handleError() {
+        $('.page-loader').hide();
         const errorimg = $('<img>').attr({
             'src': 'components/css/images/serverdown.png',
             'width': '100%'
         });
         const errorMessage = $('<div>').addClass('error-message');
         errorMessage.append(errorimg);
-        const errorModal = new Modal(errorMessage);
+        const errorContainer = $('<div>').addClass('error-container').append(errorMessage);
+        this.render('#main-content', errorContainer);
     }
     newElement(image, album, artist, song, link) {
         const imageBox = $('<div>').addClass('image-box').css('background-image', `url(${image})`);

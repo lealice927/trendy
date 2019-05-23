@@ -6,6 +6,10 @@ class Movie {
         this.addMoreResults = this.addMoreResults.bind(this);
         this.movieIndex = 0;
         this.index = 10;
+
+        const loader = $('<div>').addClass('loader');
+        const pageLoader = $('<div>').addClass('page-loader').append(loader);
+        $('#main-content').append(pageLoader);
     }
     getDataFromServer() {
         const ajaxObject = {
@@ -15,11 +19,13 @@ class Movie {
             success: (response) => {
                 this.handleSuccess(response);
             },
-            error: this.handleError
+            error: this.handleError,
         }
+        $('.page-loader').show();
         $.ajax(ajaxObject);
     }
     handleSuccess(response) {
+        $('.page-loader').hide();
         for (let index = 0; index < this.index; index++) {
             const movieImage = response.feed.results[index].artworkUrl100;
             const movieName = `# ${index + 1} :  ${response.feed.results[index].name}`;
@@ -34,13 +40,15 @@ class Movie {
     }
 
     handleError() {
+        $('#main-content').empty();
         const errorimg = $('<img>').attr({
             'src': 'components/css/images/serverdown.png',
             'width': '100%'
         });
         const errorMessage = $('<div>').addClass('error-message');
         errorMessage.append(errorimg);
-        const errorModal = new Modal(errorMessage);
+        const errorContainer = $('<div>').addClass('error-container').append(errorMessage);
+        this.render('#main-content', errorContainer);
     }
     newElement(image, movie, director, genre, link) {
         const imageBox = $('<div>').addClass('image-box').css('background-image', `url(${image})`);
