@@ -11,18 +11,15 @@ class Food{
         this.getDataFromServer = this.getDataFromServer.bind(this);
         this.dealData = this.dealData.bind(this);
         this.popUpImg = this.popUpImg.bind(this);
-        this.popUpYelp = this.popUpYelp.bind(this);
         this.addMoreResults = this.addMoreResults.bind(this);
 
         this.callback = {
-            img: this.popUpImg,
-            yelp: this.popUpYelp
+            img: this.popUpImg
         }
-    }
-    popUpYelp(content){
-        const titleUrl = `${content.contentBox.title.url}`;
-        const iframe = $('<iframe>').attr('src', titleUrl).addClass('yelpframe');
-        const modal = new Modal(iframe);
+
+        const loader = $('<div>').addClass('loader');
+        const pageLoader = $('<div>').addClass('page-loader').append(loader);
+        $('#main-content').append(pageLoader);
     }
     popUpImg(content){
         const imageUrl = `url('${content.contentBox.imgBox.url}')`;
@@ -55,12 +52,14 @@ class Food{
         } else {
             ajaxObj.data.location = 'orange county';
         }
+        $('.page-loader').show();
         this.generateSearchData(ajaxObj);
     }
     generateSearchData(ajaxObj){
         $.ajax(ajaxObj);
     }
     dealData(response){
+        $('.page-loader').hide();
         const business = response.businesses;
         for(let i=0; i < business.length; i++){
             const newContent = new FoodContent(business[i], this.callback);
@@ -76,13 +75,15 @@ class Food{
         this.mainContent.append(content);
     }
     handleError(){
+        $('.page-loader').hide();
         const errorimg = $('<img>').attr({
             'src': 'components/css/images/serverdown.png',
             'width' : '100%'
             });
         const errorMessage = $('<div>').addClass('error-message');
         errorMessage.append(errorimg);
-        const errorModal = new Modal(errorMessage);
+        const errorContainer = $('<div>').addClass('error-container').append(errorMessage);
+        $('#main-content').append(errorContainer);
     } 
     getCurrentLocation(){
         navigator.geolocation.getCurrentPosition(this.savePosition);
