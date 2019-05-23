@@ -7,6 +7,9 @@ class Movie {
         this.movieIndex = 0;
         this.index = 10;
 
+        this.loader();
+    }
+    loader() {
         const loader = $('<div>').addClass('loader');
         const pageLoader = $('<div>').addClass('page-loader').append(loader);
         $('#main-content').append(pageLoader);
@@ -68,9 +71,9 @@ class Movie {
     }
     addMoreResults() {
         $('#main-content').empty();
-        this.getDataFromServer();
+        this.loader();
         this.addMoreResultsButton();
-
+        this.getDataFromServer();
     }
 
     addMoreResultsButton() {
