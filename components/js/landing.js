@@ -15,7 +15,7 @@ class LandingPage {
         const foodTopics = food.createDomElements('fas fa-ice-cream', 'Food');
         const music = new LandingElement('Music', this.elementClick);
         const musicTopics = music.createDomElements('fas fa-music', 'Music');
-        const foodMusicRow = $('<div>').addClass('topic-row').append(foodTopics, musicTopics);
+        const foodMusicRow = $('<div>').addClass('topic-row first-row').append(foodTopics, musicTopics);
         const movie = new LandingElement('Movie', this.elementClick);
         const movieTopics = movie.createDomElements('fas fa-film', 'Movie');
         const video = new LandingElement('Video', this.elementClick);
