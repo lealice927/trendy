@@ -73,6 +73,11 @@ body {
     left: 10%;
 }
 
+@media only screen and (max-height: 550px){
+    .topics-title {
+        margin-top: 50px;
+    }
+}
 .main-content {
     width: 80%;
     height: 100%;
@@ -159,7 +164,7 @@ a {
 	left: 50%;
 	top: 50%;
     height: 60vh;
-    width: 60vh;
+    width: 80vh;
 	transform: translate(-50%, -50%);
 }
 
@@ -267,12 +272,12 @@ a {
     width: 100%;
     position: relative;
     box-sizing: border-box;
-    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
 }
 
 .titleimg{
-    width: 60%;
-    margin: 2vmin 0;
+    width: 50vmin;
+    margin: 5vh 0;
 }
 
 .title-background{
@@ -294,8 +299,9 @@ a {
     text-align: center;
     height: 30%;
     width: 80%;
-    font-size: calc(1rem + 1vmin);
-    padding-top: 5vmin;
+    font-size: calc(1.3rem + 1vmin);
+    position: relative;
+    top: 6vmin;
 }
 
 .topic-area{
@@ -315,6 +321,11 @@ a {
     height: 50%;
     width: 100%;
     position: relative;
+}
+
+.first-row{
+    position: relative;
+    top: 5vmin;
 }
 
 .topics{
@@ -468,7 +479,7 @@ a {
         font-size: 4.5vmin;
     }
     .modalBody{
-        width: 60vmin;
+        width: 80vmin;
         height: 60vmin;
     }
     .image-box,
