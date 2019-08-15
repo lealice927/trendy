@@ -2,7 +2,7 @@
 
 # Trendy
 
-##### https://trendy.jungiang.com
+##### https://trendy.alicele.dev
 
 This repo contains the Trendy Application. Designed for mobile, the app serves as an information hub for what is currently popular in media and food. Simply click on one of the four categories available and see what is trending in Yelp, YouTube, iTunes music and movies. The top ten are listed automatically, but for anything below the rankings, just click on the "Show More" button. A responsive design allows many different phone platforms, whether Samsung, Apple, etc., to be used and in any phone orientation. 
 
